@@ -1,3 +1,12 @@
+pyqt5 (5.7+dfsg-6) UNRELEASED; urgency=medium
+
+  * Add patches from upstream to support Qt 5.9:
+    - no_license_check.diff
+    - qt59_support.diff
+    - opengl_detection.diff
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sat, 22 Jul 2017 10:11:49 +0300
+
 pyqt5 (5.7+dfsg-5) unstable; urgency=medium
 
   * Make WebEngine packages depend on WebChannel, to avoid import errors.
