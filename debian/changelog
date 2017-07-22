@@ -4,6 +4,7 @@ pyqt5 (5.7+dfsg-6) UNRELEASED; urgency=medium
     - no_license_check.diff
     - qt59_support.diff
     - opengl_detection.diff
+  * Build against Qt 5.9.1.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Sat, 22 Jul 2017 10:11:49 +0300
 
