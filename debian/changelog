@@ -5,7 +5,7 @@ pyqt5 (5.7+dfsg-6) UNRELEASED; urgency=medium
     - qt59_support.diff
     - opengl_detection.diff
   * Build against Qt 5.9.1.
-  * Enable Qt WebEngine support on arm64 and armhf (closes: #867733).
+  * Enable Qt WebEngine support on arm64, armhf and mipsel (closes: #867733).
 
  -- Dmitry Shachnev <mitya57@debian.org>  Sat, 22 Jul 2017 10:11:49 +0300
 
