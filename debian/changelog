@@ -1,3 +1,9 @@
+pyqt5 (5.7+dfsg-5+deb9u1) UNRELEASED; urgency=medium
+
+  * Enable Qt WebEngine support for armhf and mipsel (closes: #879958).
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sun, 29 Oct 2017 13:35:57 +0300
+
 pyqt5 (5.7+dfsg-5) unstable; urgency=medium
 
   * Make WebEngine packages depend on WebChannel, to avoid import errors.
