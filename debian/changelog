@@ -12,6 +12,9 @@ pyqt5 (5.9.2+dfsg-2) UNRELEASED; urgency=medium
   * Fix mismatch python:Version substitution variable for
     python-pyqt5.qtsensors and python-pyqt5.qtx11extras
 
+  [ Ondřej Nový ]
+  * d/control: Set Vcs-* to salsa.debian.org
+
  -- Scott Kitterman <scott@kitterman.com>  Sun, 14 Jan 2018 02:44:39 -0500
 
 pyqt5 (5.9.2+dfsg-1) unstable; urgency=medium
