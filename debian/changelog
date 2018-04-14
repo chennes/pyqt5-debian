@@ -8,6 +8,7 @@ pyqt5 (5.10.1+dfsg-1) UNRELEASED; urgency=medium
     when doing arch+indep build.
   * Update debhelper compatibility level to 10.
   * Use dh_missing instead of deprecated dh_install --fail-missing.
+  * Bump Standards-Version to 4.1.4, no changes needed.
 
   [ Scott Kitterman ]
   * Fix mismatch python:Version substitution variable for
