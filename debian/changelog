@@ -1,4 +1,4 @@
-pyqt5 (5.10.1+dfsg-2) UNRELEASED; urgency=medium
+pyqt5 (5.10.1+dfsg-2) unstable; urgency=medium
 
   [ Ondřej Nový ]
   * d/tests: Use AUTOPKGTEST_TMP instead of ADTTMP
@@ -8,7 +8,7 @@ pyqt5 (5.10.1+dfsg-2) UNRELEASED; urgency=medium
     (closes: #898211).
   * Drop ancient X-Python{,3}-Version fields.
 
- -- Ondřej Nový <onovy@debian.org>  Tue, 17 Apr 2018 13:22:05 +0200
+ -- Dmitry Shachnev <mitya57@debian.org>  Thu, 10 May 2018 17:09:00 +0300
 
 pyqt5 (5.10.1+dfsg-1) unstable; urgency=medium
 
