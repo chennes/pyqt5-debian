@@ -4,6 +4,8 @@ pyqt5 (5.11.2+dfsg-1) UNRELEASED; urgency=medium
   * Bump sip build-dependencies to 4.19.11, following configure.py.
   * Drop cura_crash.diff, applied in the new release.
   * Use the public version of sip module, per Policy § 4.13.
+  * Configure with --no-dist-info for now, mk_distinfo.py does not work
+    well with DESTDIR yet.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Mon, 02 Jul 2018 18:43:04 +0300
 
