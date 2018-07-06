@@ -1,4 +1,4 @@
-pyqt5 (5.11.2+dfsg-1) UNRELEASED; urgency=medium
+pyqt5 (5.11.2+dfsg-1) unstable; urgency=medium
 
   * New upstream release.
   * Bump sip build-dependencies to 4.19.11, following configure.py.
@@ -10,7 +10,7 @@ pyqt5 (5.11.2+dfsg-1) UNRELEASED; urgency=medium
   * Bump Standards-Version to 4.1.5, no changes needed.
   * Update Homepage field in debian/control.
 
- -- Dmitry Shachnev <mitya57@debian.org>  Mon, 02 Jul 2018 18:43:04 +0300
+ -- Dmitry Shachnev <mitya57@debian.org>  Fri, 06 Jul 2018 13:09:02 +0300
 
 pyqt5 (5.10.1+dfsg-2) unstable; urgency=medium
 
