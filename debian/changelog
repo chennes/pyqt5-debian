@@ -1,4 +1,4 @@
-pyqt5 (5.11.3+dfsg-1) UNRELEASED; urgency=medium
+pyqt5 (5.11.3+dfsg-1) unstable; urgency=medium
 
   [ Ondřej Nový ]
   * d/watch: Use https protocol
@@ -10,7 +10,7 @@ pyqt5 (5.11.3+dfsg-1) UNRELEASED; urgency=medium
   * Install both upstream changelog and NEWS, per Policy 12.7.
   * Bump Standards-Version to 4.2.1, no changes needed.
 
- -- Ondřej Nový <onovy@debian.org>  Sun, 30 Sep 2018 16:06:55 +0200
+ -- Dmitry Shachnev <mitya57@debian.org>  Fri, 12 Oct 2018 12:35:34 +0300
 
 pyqt5 (5.11.2+dfsg-1) unstable; urgency=medium
 
