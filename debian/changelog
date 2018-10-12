@@ -7,6 +7,7 @@ pyqt5 (5.11.3+dfsg-1) UNRELEASED; urgency=medium
   * New upstream release.
   * Update public_sip.diff, revert some more upstream changes.
   * Do not override default dh_builddeb parameters.
+  * Install both upstream changelog and NEWS, per Policy 12.7.
 
  -- Ondřej Nový <onovy@debian.org>  Sun, 30 Sep 2018 16:06:55 +0200
 
