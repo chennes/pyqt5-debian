@@ -67,7 +67,7 @@ build-%/configure-stamp:
 			-d /usr/lib/python$*/dist-packages \
 			--sip-incdir /usr/include/python$*$(if $(filter 3.%, $*),m,) \
 			--no-sip-files \
-			$(if $(filter $(DEFAULT_PYTHON),$*),,--no-designer-plugin --no-qml-plugin --no-tools)
+			$(if $(filter $(DEFAULT_PYTHON),$*),,--no-designer-plugin --no-qml-plugin) $(if $(filter 3.%,$*),,--no-tools)
 	sed -i '/strip/d' build-$*/*/Makefile
 	touch $@
 
