@@ -1,5 +1,8 @@
 pyqt5 (5.11.3+dfsg-2) UNRELEASED; urgency=medium
 
+  [ Bastian Germann ]
+  * Provide dist-info metadata (closes: #890200; LP: #1814019).
+
   [ Scott Kitterman ]
   * Remove myself from uploaders
 
