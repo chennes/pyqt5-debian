@@ -41,8 +41,7 @@ Build-Depends: debhelper (>= 11),
                qtlocation5-dev (>= 5.9.1),
                qtmultimedia5-dev (>= 5.9.1),
                qtpositioning5-dev (>= 5.9.1),
-               qttools5-dev (>= 5.9.1),
-               qtwebengine5-dev (>= 5.9.1) [amd64 arm64 armhf i386 mipsel]
+               qttools5-dev (>= 5.9.1)
 Build-Depends-Indep: fdupes
 Standards-Version: 4.3.0
 Homepage: https://riverbankcomputing.com/software/pyqt/intro
@@ -225,32 +224,6 @@ Description: Python 3 bindings for Qt5's Webchannel module (debug extension)
  WebKit 2 and Qt WebEngine (experimental).
  .
  This package contains the extension built for the Python 3 debug interpreter.
-
-Package: python3-pyqt5.qtwebengine
-Architecture: amd64 arm64 armhf i386 mipsel
-Depends: python3-pyqt5.qtwebchannel (= ${binary:Version}),
-         ${misc:Depends},
-         ${python3:Depends},
-         ${shlibs:Depends}
-Description: Python 3 bindings for Qt5's WebEngine module
- The WebEngine module of PyQt5 provides a Chromium-based Web browser engine
- for PyQt5 applications.
- .
- This package contains the Python 3 version of this module.
-
-Package: python3-pyqt5.qtwebengine-dbg
-Section: debug
-Architecture: amd64 arm64 armhf i386 mipsel
-Depends: python3-dbg,
-         python3-pyqt5.qtwebchannel-dbg (= ${binary:Version}),
-         python3-pyqt5.qtwebengine (= ${binary:Version}),
-         ${misc:Depends},
-         ${shlibs:Depends}
-Description: Python 3 bindings for Qt5's WebEngine module (debug extensions)
- The WebEngine module of PyQt5 provides a Chromium-based Web browser engine
- for PyQt5 applications.
- .
- This package contains the extensions built for the Python 3 debug interpreter.
 
 Package: python3-pyqt5.qtwebkit
 Architecture: any
@@ -649,32 +622,6 @@ Description: Python 2 bindings for Qt5's Webchannel module (debug extension)
  WebKit 2 and Qt WebEngine (experimental).
  .
  This package contains the extension built for the Python 2 debug interpreter.
-
-Package: python-pyqt5.qtwebengine
-Architecture: amd64 arm64 armhf i386 mipsel
-Depends: python-pyqt5.qtwebchannel (= ${binary:Version}),
-         ${misc:Depends},
-         ${python:Depends},
-         ${shlibs:Depends}
-Description: Python 2 bindings for Qt5's WebEngine module
- The WebEngine module of PyQt5 provides a Chromium-based Web browser engine
- for PyQt5 applications.
- .
- This package contains the Python 2 version of this module.
-
-Package: python-pyqt5.qtwebengine-dbg
-Section: debug
-Architecture: amd64 arm64 armhf i386 mipsel
-Depends: python-dbg,
-         python-pyqt5.qtwebchannel-dbg (= ${binary:Version}),
-         python-pyqt5.qtwebengine (= ${binary:Version}),
-         ${misc:Depends},
-         ${shlibs:Depends}
-Description: Python 2 bindings for Qt5's WebEngine module (debug extensions)
- The WebEngine module of PyQt5 provides a Chromium-based Web browser engine
- for PyQt5 applications.
- .
- This package contains the extensions built for the Python 2 debug interpreter.
 
 Package: python-pyqt5.qtwebkit
 Architecture: any
