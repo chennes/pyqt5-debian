@@ -13,6 +13,7 @@ pyqt5 (5.12+dfsg-1) UNRELEASED; urgency=medium
   * New upstream release.
   * Refresh debian/patches/public_sip.diff.
   * Drop Qt WebEngine packages, they are now in a separate source.
+  * Update debian/copyright.
 
  -- Scott Kitterman <scott@kitterman.com>  Mon, 12 Nov 2018 00:57:12 -0500
 
