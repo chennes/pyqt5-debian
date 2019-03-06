@@ -1,4 +1,4 @@
-pyqt5 (5.12+dfsg-1) UNRELEASED; urgency=medium
+pyqt5 (5.12+dfsg-1) experimental; urgency=medium
 
   [ Bastian Germann ]
   * Provide dist-info metadata (closes: #890200; LP: #1814019).
@@ -16,7 +16,7 @@ pyqt5 (5.12+dfsg-1) UNRELEASED; urgency=medium
   * Update debian/copyright.
   * Bump sip build-dependencies to 4.19.14, following configure.py.
 
- -- Scott Kitterman <scott@kitterman.com>  Mon, 12 Nov 2018 00:57:12 -0500
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 06 Mar 2019 14:34:54 +0300
 
 pyqt5 (5.11.3+dfsg-1) unstable; urgency=medium
 
