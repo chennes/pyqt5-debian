@@ -1,6 +1,7 @@
 pyqt5 (5.12.1+dfsg-1) UNRELEASED; urgency=medium
 
   * New upstream release.
+  * Update debian/watch for another upstream change.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Wed, 27 Mar 2019 22:02:10 +0300
 
