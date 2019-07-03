@@ -1,6 +1,7 @@
 pyqt5 (5.12.3+dfsg-1) UNRELEASED; urgency=medium
 
   * New upstream release.
+  * Refresh debian/patches/public_sip.diff.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Wed, 03 Jul 2019 21:22:54 +0300
 
