@@ -28,7 +28,7 @@ import sys
 
 
 # Initialise the constants.
-PYQT_VERSION_STR = "5.12.3"
+PYQT_VERSION_STR = "5.13.0"
 SIP_MIN_VERSION = '4.19.14'
 
 
@@ -219,6 +219,13 @@ def version_to_sip_tag(version):
     major = (version >> 16) & 0xff
     minor = (version >> 8) & 0xff
     patch = version & 0xff
+
+    # Qt v5.12.4 was the last release where we updated for a patch version.
+    if (major, minor) >= (5, 13):
+        patch = 0
+    elif (major, minor) == (5, 12):
+        if patch > 4:
+            patch = 4
 
     return 'Qt_%d_%d_%d' % (major, minor, patch)
 
@@ -2959,7 +2966,7 @@ def check_sip(target_config, verbose):
 
     if '.dev' in version_str or 'snapshot' in version_str:
         # We only need to distinguish between sip v4 and sip v5.
-        if os.path.basename(target_config.sip) == 'sip5':
+        if os.path.basename(target_config.sip).startswith('sip5'):
             version = 0x050000
         else:
             version = 0x040000

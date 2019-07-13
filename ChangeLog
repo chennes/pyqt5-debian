@@ -1,4 +1,93 @@
+2019-07-04  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* NEWS:
+	Released as v5.13.0.
+	[1592be9a7612] [5.13.0]
+
+	* qpy/QtNetwork/qpynetwork_qhash.sip:
+	Fixed the conversion of the result of
+	QNetworkCacheMetaData.attributes().
+	[7a790979cc76]
+
+2019-07-02  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* NEWS:
+	Updated the NEWS file.
+	[4f43ce95dd35]
+
+2019-07-01  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* PyQt5.msp:
+	Fixed building against Qt v5.13.0 on Windows.
+	[20b114bd92ba]
+
+	* lib/configure.py:
+	Fix building with sip5 on Windows.
+	[4ee512d20432]
+
+	* qpy/QtCore/qpycore_qstring.cpp:
+	Fixes for building against Python v2.
+	[e5dd514fdba6]
+
+2019-06-30  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* lib/configure.py:
+	We stopped updating after a new patch version of Qt.
+	[fa00587b11b3]
+
+2019-06-29  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* PyQt5.msp:
+	Updated QtTest, QtWebChannel, QtWebSockets, QtWidgets, QtXml and
+	QtXmlPatterns to Qt v5.13.0.
+	[5a6b19710480]
+
+	* PyQt5.msp:
+	Updated QtQml, QtQuick, QtQuickWidgets, QtRemoteObjects, QtSensors,
+	QtSerialPort, QtSql and QtSvg for Qt v5.13.0.
+	[1efbbbdd5935]
+
+2019-06-27  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* PyQt5.msp, qpy/QtPrintSupport/qpyprintsupport_qlist.sip:
+	Updated QtPositioning and QtPrintSupport for Qt v5.13.0.
+	[88f1e11d6196]
+
+2019-06-26  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* PyQt5.msp:
+	Updated QtNetworkAuth, QtNfc and QtOpenGL for Qt v5.13.0.
+	[c7c509085f3a]
+
+	* PyQt5.msp:
+	Updated QtLocation, QtMultimedia, QtMultimediaWidgets and QtNetwork
+	for Qt v5.13.0.
+	[bcbfd98dfbc7]
+
+	* PyQt5.msp, lib/SubclassCode/QtHelp.versions:
+	Updated QtHelp for Qt v5.13.0.
+	[717494d15859]
+
+	* PyQt5.msp:
+	Updated QtDBus, QtDesigner and QtGui for Qt v5.13.0.
+	[b8478519a504]
+
+	* QAxContainer/qaxbase.sip:
+	Updated QAxContainer for Qt v5.13.0.
+	[8e09194d3ed2]
+
+	* PyQt5.msp, lib/SubclassCode/QtCore.versions:
+	Updated QtBluetooth and QtCore for Qt v5.13.0.
+	[140145f8f1a8]
+
 2019-06-25  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* Merged the v5.12.3 release.
+	[be2545659bbb]
+
+	* .hgtags:
+	Added tag 5.12.3 for changeset 8c3a9f671ec5
+	[c110974325ce] <5.12-maint>
 
 	* NEWS:
 	Released as v5.12.3.
@@ -20,6 +109,9 @@
 
 2019-06-24  Phil Thompson  <phil@riverbankcomputing.com>
 
+	* Merged the lates 5.12-maint changes.
+	[bf79e402f77f]
+
 	* PyQt5.msp:
 	QObject.__getattr__() now accepts a utf-8 encoded attribute name.
 	[8d83d3192363] <5.12-maint>
@@ -29,6 +121,9 @@
 	[f42c4fc95380] <5.12-maint>
 
 2019-06-20  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* Merged the 5.12-maint branch.
+	[5dcb488f8a1e]
 
 	* PyQt5.msp:
 	Added support for Qt v5.12.4.
