@@ -6,6 +6,7 @@ pyqt5 (5.12.3+dfsg-2) UNRELEASED; urgency=medium
 
   [ Dmitry Shachnev ]
   * Update python2_qstring.diff with the latest changes from upstream.
+  * Update Policy URL in the description of public_sip.diff.
 
  -- Ondřej Nový <onovy@debian.org>  Sat, 20 Jul 2019 00:19:34 +0200
 
