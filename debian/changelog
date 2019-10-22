@@ -6,6 +6,8 @@ pyqt5 (5.12.3+dfsg-3) UNRELEASED; urgency=medium
   [ Dmitry Shachnev ]
   * Backport upstream change to stop using deprecated -B option of sip.
     This option caused build failure when used together with -f.
+  * Use distutils to get Python include directory. Fixes build failure
+    with Python 3.8.
 
  -- Ondřej Nový <onovy@debian.org>  Fri, 18 Oct 2019 15:59:27 +0200
 
