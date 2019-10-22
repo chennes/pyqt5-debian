@@ -1,6 +1,11 @@
 pyqt5 (5.12.3+dfsg-3) UNRELEASED; urgency=medium
 
+  [ Ondřej Nový ]
   * Bump Standards-Version to 4.4.1.
+
+  [ Dmitry Shachnev ]
+  * Backport upstream change to stop using deprecated -B option of sip.
+    This option caused build failure when used together with -f.
 
  -- Ondřej Nový <onovy@debian.org>  Fri, 18 Oct 2019 15:59:27 +0200
 
