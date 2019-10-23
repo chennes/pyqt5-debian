@@ -1,4 +1,4 @@
-pyqt5 (5.12.3+dfsg-3) UNRELEASED; urgency=medium
+pyqt5 (5.12.3+dfsg-3) unstable; urgency=medium
 
   [ Ondřej Nový ]
   * Bump Standards-Version to 4.4.1.
@@ -9,7 +9,7 @@ pyqt5 (5.12.3+dfsg-3) UNRELEASED; urgency=medium
   * Use distutils to get Python include directory. Fixes build failure
     with Python 3.8.
 
- -- Ondřej Nový <onovy@debian.org>  Fri, 18 Oct 2019 15:59:27 +0200
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 23 Oct 2019 09:46:48 +0300
 
 pyqt5 (5.12.3+dfsg-2) unstable; urgency=medium
 
