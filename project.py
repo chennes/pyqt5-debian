@@ -114,56 +114,49 @@ del find_qt
         # Add our new options.
         options.append(
                 Option('confirm_license', option_type=bool,
-                        help="confirm acceptance of the license",
-                        tools='build install wheel'))
+                        help="confirm acceptance of the license"))
 
         options.append(
                 Option('license_dir', option_type=str,
                         help="the license file can be found in DIR",
-                        metavar="DIR", tools='build install wheel'))
+                        metavar="DIR"))
 
         options.append(
                 Option('qt_shared', option_type=bool,
-                        help="assume Qt has been built as shared libraries",
-                        tools='build install wheel'))
+                        help="assume Qt has been built as shared libraries"))
 
         options.append(
                 Option('designer_plugin', option_type=bool, inverted=True,
-                        help="disable the building of the Python plugin for Qt Designer",
-                        tools='build install wheel'))
+                        help="disable the building of the Python plugin for Qt Designer"))
 
         options.append(
                 Option('qml_plugin', option_type=bool, inverted=True,
-                        help="disable the building of the Python plugin for qmlscene",
-                        tools='build install wheel'))
+                        help="disable the building of the Python plugin for qmlscene"))
 
         options.append(
                 Option('dbus', option_type=str,
                         help="the directory containing the dbus/dbus-python.h file",
-                        metavar="DIR",
-                        tools='build install wheel'))
+                        metavar="DIR"))
 
         options.append(
                 Option('dbus_python', option_type=bool, inverted=True,
-                        help="disable the Qt support for the dbus-python package",
-                        tools='build install wheel'))
+                        help="disable the Qt support for the dbus-python package"))
 
         options.append(
                 Option('tools', option_type=bool, inverted=True,
-                        help="disable the building of pyuic5, pyrcc5 and pylupdate5",
-                        tools='build install wheel'))
+                        help="disable the building of pyuic5, pyrcc5 and pylupdate5"))
 
         return options
 
     def update(self, tool):
         """ Update the configuration. """
 
-        if tool == 'sdist':
+        if tool not in Option.BUILD_TOOLS:
             return
 
-        # Automatically confirm the license if there is no command line option
-        # to do so.
-        if tool == '':
+        # Automatically confirm the license if there might not be a command
+        # line option to do so.
+        if tool == 'pep517':
             self.confirm_license = True
 
         self._check_license()
@@ -252,7 +245,9 @@ del find_qt
         dbus_lib_dirs = []
         dbus_libs = []
 
-        for line in self.read_command_pipe('pkg-config --cflags-only-I --libs dbus-1', fatal=False):
+        args = ['pkg-config', '--cflags-only-I', '--libs dbus-1']
+
+        for line in self.read_command_pipe(args, fatal=False):
             for flag in line.strip().split():
                 if flag.startswith('-I'):
                     dbus_inc_dirs.append(flag[2:])

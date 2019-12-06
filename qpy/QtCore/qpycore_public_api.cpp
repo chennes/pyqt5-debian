@@ -30,6 +30,7 @@
 #include "qpycore_types.h"
 
 #include <QCoreApplication>
+#include <QThread>
 
 
 // The visitor called for each wrapper to clean up if it is a QObject.
@@ -49,6 +50,15 @@ static void cleanup_qobject(sipSimpleWrapper *sw, void *closure)
     // Ignore non-QObjects.
     if (!PyObject_TypeCheck((PyObject *)sw, sipTypeAsPyTypeObject(sipType_QObject)))
         return;
+
+    // Ignore running threads.
+    if (PyObject_TypeCheck((PyObject *)sw, sipTypeAsPyTypeObject(sipType_QThread)))
+    {
+        QThread *thr = reinterpret_cast<QThread *>(addr);
+
+        if (thr->isRunning())
+            return;
+    }
 
     sipTransferTo((PyObject *)sw, SIP_NULLPTR);
 

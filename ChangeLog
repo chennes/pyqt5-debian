@@ -1,4 +1,108 @@
+2019-11-02  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* NEWS:
+	Released as v5.13.2.
+	[ed56ea659bb0] [5.13.2] <5.13-maint>
+
+	* NEWS:
+	Updated the NEWS file.
+	[b65ab87137e7] <5.13-maint>
+
+2019-10-25  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* pyuic/uic/Loader/loader.py, pyuic/uic/uiparser.py:
+	Fixed the loading of resources by pyuic when parsing prior to
+	compiling.
+	[8ab7188957f9] <5.13-maint>
+
+2019-10-12  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* qpy/QtCore/qpycore_chimera.cpp:
+	A QVariant for a pointer to an instance of unknown type will now be
+	converted to a voidptr object.
+	[aa92cdba8bd5] <5.13-maint>
+
+2019-10-04  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* lib/configure.py:
+	configure.py always uses mk_distinfo.py.
+	[75ce243e09f3] <5.13-maint>
+
+	* lib/configure.py:
+	Fixed building with configure.py and sip v5.
+	[81b0347831c8] <5.13-maint>
+
+2019-10-03  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* lib/pyproject.toml:
+	Fixed the name of PEP 566.
+	[e61052653a78] <5.13-maint>
+
+	* lib/pyproject.toml:
+	Requires PyQt-builder v1.
+	[13354d23b0ff] <5.13-maint>
+
+2019-10-01  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* lib/pyproject.toml:
+	Fixed the name of the PyQt-builder project.
+	[448c6595e115] <5.13-maint>
+
+2019-09-30  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* lib/configure.py:
+	Updated to use sip-module rather than sip-header.
+	[53e1e1452030] <5.13-maint>
+
+2019-09-27  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* lib/project.py:
+	Changes for the latest sip v5 API changes.
+	[f0081cfe3b2b] <5.13-maint>
+
+2019-09-26  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* lib/configure.py:
+	sip5-header is now sip-header.
+	[f83c9fe3199f] <5.13-maint>
+
+2019-09-22  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* PyQt5.msp:
+	Added the missing pos() and two setPos() overloads to QCursor.
+	[72b09c3d761d] <5.13-maint>
+
+	* lib/project.py:
+	More fixes for sip v5 API changes.
+	[8a159d5c82cf] <5.13-maint>
+
+	* lib/project.py:
+	Further changes driven by sip v5 API changes.
+	[732d4bb56f4d] <5.13-maint>
+
+2019-09-21  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* lib/project.py, lib/pyproject.toml:
+	Changes for the latest sip v5 API.
+	[bb7c877b83e6] <5.13-maint>
+
+2019-09-18  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* qpy/QtCore/qpycore_public_api.cpp:
+	The new on-exit scheme now ignores running QThreads.
+	[3cc975356440] <5.13-maint>
+
+2019-09-13  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* pyuic/uic/Compiler/qtproxies.py:
+	pyuic now handles QKeySequenceEdit.
+	[3d4ad156100c] <5.13-maint>
+
 2019-09-07  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* .hgtags:
+	Added tag 5.13.1 for changeset 3b8a68bbc4bc
+	[b8f8dfe1a7ca] <5.13-maint>
 
 	* NEWS:
 	Released as v5.13.1.

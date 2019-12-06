@@ -28,7 +28,7 @@ import sys
 
 
 # Initialise the constants.
-PYQT_VERSION_STR = "5.13.1"
+PYQT_VERSION_STR = "5.13.2"
 SIP_MIN_VERSION = '4.19.19'
 
 
@@ -1773,11 +1773,8 @@ INSTALLS += qscintilla_api
         distinfo_dir = os.path.join(target_config.pyqt_module_dir,
                 'PyQt5-' + PYQT_VERSION_STR + '.dist-info')
 
-        if target_config.using_sip5():
-            run_mk_distinfo = 'sip5-distinfo --prefix \\"$(INSTALL_ROOT)\\" --inventory installed.txt ' + distinfo_dir
-        else:
-            run_mk_distinfo = '%s %s \\"$(INSTALL_ROOT)\\" %s installed.txt' % (
-                    sys.executable, source_path('mk_distinfo.py'), distinfo_dir)
+        run_mk_distinfo = '%s %s \\"$(INSTALL_ROOT)\\" %s installed.txt' % (
+                sys.executable, source_path('mk_distinfo.py'), distinfo_dir)
 
         out_f.write('''
 distinfo.extra = %s
@@ -3011,13 +3008,13 @@ def check_sip(target_config, verbose):
 
             os.makedirs(target_config.sip_inc_dir, exist_ok=True)
 
-            argv = ['sip5-header']
+            argv = ['sip-module', '--sip-h']
 
             if target_config.abi_version:
                 argv.append('--abi-version')
                 argv.append(target_config.abi_version)
 
-            argv.append('--include-dir')
+            argv.append('--target-dir')
             argv.append(quote(target_config.sip_inc_dir)),
             argv.append('PyQt5.sip')
 
@@ -3025,7 +3022,7 @@ def check_sip(target_config, verbose):
 
             if not os.access(os.path.join(target_config.sip_inc_dir, 'sip.h'), os.F_OK):
                 error(
-                        "sip5-header failed to install sip.h in %s." %
+                        "sip-module failed to install sip.h in %s." %
                                 target_config.sip_inc_dir)
     else:
         if target_config.sip_inc_dir is None:
