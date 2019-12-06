@@ -5,6 +5,7 @@ pyqt5 (5.13.2+dfsg-1) UNRELEASED; urgency=medium
   * Drop patches, applied in the new release:
     - python2_qstring.diff
     - remove_deprecated_sip_option.diff
+  * Refresh and rebase other patches.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Fri, 06 Dec 2019 22:26:55 +0300
 
