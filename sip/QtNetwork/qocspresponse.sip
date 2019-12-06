@@ -21,8 +21,10 @@
 
 
 %If (Qt_5_13_0 -)
+%If (PyQt_SSL)
 %ModuleCode
 #include <qocspresponse.h>
+%End
 %End
 %End
 

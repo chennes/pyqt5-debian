@@ -1,3 +1,11 @@
+v5.13.1 14th September 2019
+  - Added the (temporary) pyqt5_enable_new_onexit_scheme() to allow
+    experimentation with the new on-exit clean-up scheme.
+  - Added support for sip v5.
+  - Added the missing QObject.disconnect(QMetaObject.Connection) overload.
+  - Deprecated PYQT_CONFIGURATION.
+  - SIP v4.19.19 is required.
+
 v5.13.0 5th July 2019
   - Added support for Qt v5.13.0.
 

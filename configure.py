@@ -28,8 +28,8 @@ import sys
 
 
 # Initialise the constants.
-PYQT_VERSION_STR = "5.13.0"
-SIP_MIN_VERSION = '4.19.14'
+PYQT_VERSION_STR = "5.13.1"
+SIP_MIN_VERSION = '4.19.19'
 
 
 class ModuleMetadata:
@@ -712,7 +712,7 @@ class TargetConfiguration:
         lines = run_test_program('QtCore', test, verbose)
 
         self.qt_shared = (lines[0] == 'shared')
-        self.pyqt_disabled_features = lines[1:-1]
+        self.pyqt_disabled_features = lines[1:]
 
         if self.pyqt_disabled_features:
             inform("Disabled QtCore features: %s" % ', '.join(
@@ -935,7 +935,7 @@ class TargetConfiguration:
             self.sip = opts.sip
 
         if opts.abi_version is not None:
-            if os.path.basename(self.sip) != 'sip5':
+            if not self.using_sip5():
                 error("The --abi-version argument can only be used with sip5.")
 
             self.abi_version = opts.abi_version
@@ -998,6 +998,11 @@ class TargetConfiguration:
             pro_lines.extend(['win32 {',
                     '    LIBS += ' + self.get_pylib_link_arguments(name=False),
                     '}'])
+
+    def using_sip5(self):
+        """ Return True if sip5 is being used. """
+
+        return os.path.basename(self.sip).startswith('sip5')
 
     @staticmethod
     def _find_exe(*exes):
@@ -1348,6 +1353,10 @@ def check_modules(target_config, disabled_modules, verbose):
     if target_config.qt_version >= 0x050c00:
         check_5_12_modules(target_config, disabled_modules, verbose)
 
+    # QtWebEngine needs to know if QtWebChannel is available.
+    if 'QtWebChannel' not in target_config.pyqt_modules:
+        target_config.pyqt_disabled_features.append('PyQt_WebChannel')
+
 
 def check_5_1_modules(target_config, disabled_modules, verbose):
     """ Check which modules introduced in Qt v5.1 can be built and update the
@@ -1550,23 +1559,32 @@ def generate_makefiles(target_config, verbose, parts, tracing, fatal_warnings, d
     inf.write(contents)
 
     if target_config.py_platform == 'win32':
+        # On Windows we try and make sure the Qt DLLs can be found, either any
+        # bundled copies or an existing installation (using the traditional
+        # Windows DLL search).  We don't raise an exception in case the
+        # application has already taken steps to resolve this which we don't
+        # know about.
         inf.write("""
 
 def find_qt():
-    import os
+    import os, sys
 
-    path = os.environ['PATH']
+    qtcore_dll = '\\\\Qt5Core.dll'
 
-    dll_dir = os.path.dirname(__file__) + '\\\\Qt\\\\bin'
-    if os.path.isfile(dll_dir + '\\\\Qt5Core.dll'):
-        path = dll_dir + ';' + path
-        os.environ['PATH'] = path
-    else:
-        for dll_dir in path.split(';'):
-            if os.path.isfile(dll_dir + '\\\\Qt5Core.dll'):
-                break
+    dll_dir = os.path.dirname(sys.executable)
+    if not os.path.isfile(dll_dir + qtcore_dll):
+        path = os.environ['PATH']
+
+        dll_dir = os.path.dirname(__file__) + '\\\\Qt\\\\bin'
+        if os.path.isfile(dll_dir + qtcore_dll):
+            path = dll_dir + ';' + path
+            os.environ['PATH'] = path
         else:
-            raise ImportError("unable to find Qt5Core.dll on PATH")
+            for dll_dir in path.split(';'):
+                if os.path.isfile(dll_dir + qtcore_dll):
+                    break
+            else:
+                return
 
     try:
         os.add_dll_directory(dll_dir)
@@ -1754,8 +1772,12 @@ INSTALLS += qscintilla_api
         # The command to run to generate the .dist-info directory.
         distinfo_dir = os.path.join(target_config.pyqt_module_dir,
                 'PyQt5-' + PYQT_VERSION_STR + '.dist-info')
-        run_mk_distinfo = '%s %s \\"$(INSTALL_ROOT)\\" %s installed.txt' % (
-                sys.executable, source_path('mk_distinfo.py'), distinfo_dir)
+
+        if target_config.using_sip5():
+            run_mk_distinfo = 'sip5-distinfo --prefix \\"$(INSTALL_ROOT)\\" --inventory installed.txt ' + distinfo_dir
+        else:
+            run_mk_distinfo = '%s %s \\"$(INSTALL_ROOT)\\" %s installed.txt' % (
+                    sys.executable, source_path('mk_distinfo.py'), distinfo_dir)
 
         out_f.write('''
 distinfo.extra = %s
@@ -2427,10 +2449,10 @@ def run_test_program(mname, test, verbose):
 
     # Read the details.
     f = open(out_file)
-    lines = f.read().split('\n')
+    lines = f.read().strip()
     f.close()
 
-    return lines
+    return lines.split('\n') if lines else []
 
 
 def pro_add_qt_dependencies(target_config, metadata, pro_lines, debug=None):
@@ -2566,10 +2588,6 @@ def generate_sip_module_code(target_config, verbose, parts, tracing, mname, fata
 
     if fatal_warnings:
         argv.append('-f')
-
-    # Make sure any unknown Qt version gets treated as the latest Qt v5.
-    argv.append('-B')
-    argv.append('Qt_6_0_0')
 
     if target_config.prot_is_public:
         argv.append('-P');
@@ -2966,7 +2984,7 @@ def check_sip(target_config, verbose):
 
     if '.dev' in version_str or 'snapshot' in version_str:
         # We only need to distinguish between sip v4 and sip v5.
-        if os.path.basename(target_config.sip).startswith('sip5'):
+        if target_config.using_sip5():
             version = 0x050000
         else:
             version = 0x040000

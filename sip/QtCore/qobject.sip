@@ -638,6 +638,7 @@ protected:
     bool isSignalConnected(const QMetaMethod &signal) const;
 
 public:
+    static bool disconnect(const QMetaObject::Connection &);
     SIP_PYOBJECT disconnect() const /TypeHint=""/;
 %MethodCode
         sipRes = qpycore_qobject_disconnect(sipCpp);

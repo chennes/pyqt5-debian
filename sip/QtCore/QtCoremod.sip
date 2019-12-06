@@ -41,6 +41,7 @@
 %Feature PyQt_NotBootstrapped
 %Feature PyQt_Process
 %Feature PyQt_MacOSXOnly
+%Feature PyQt_WebChannel
 
 %Copying
 Copyright (c) 2019 Riverbank Computing Limited <info@riverbankcomputing.com>
@@ -218,6 +219,7 @@ WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 %Include qpycore_qlist.sip
 %Include qwineventnotifier.sip
 %Include qstringlist.sip
+%Include qpycore_onexit.sip
 %Include qjsonarray.sip
 %Include qpycore_virtual_error_handler.sip
 %Include qpycore_qvariantmap.sip
