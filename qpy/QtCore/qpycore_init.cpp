@@ -34,19 +34,15 @@
 // dealloc code hasn't been called.
 static PyObject *cleanup_on_exit(PyObject *, PyObject *)
 {
-    //pyqt5_cleanup_qobjects();
-    if (pyqt5_cleanup_qobjects())
+    pyqt5_cleanup_qobjects();
+
+    QCoreApplication *app = QCoreApplication::instance();
+
+    if (app)
     {
-        // Implement the new scheme.
-
-        QCoreApplication *app = QCoreApplication::instance();
-
-        if (app)
-        {
-            Py_BEGIN_ALLOW_THREADS
-            delete app;
-            Py_END_ALLOW_THREADS
-        }
+        Py_BEGIN_ALLOW_THREADS
+        delete app;
+        Py_END_ALLOW_THREADS
     }
 
     Py_INCREF(Py_None);

@@ -54,6 +54,8 @@ WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 %Include qcolor.sip
 %Include qbrush.sip
 %Include qclipboard.sip
+%Include qcolorspace.sip
+%Include qcolortransform.sip
 %Include qcursor.sip
 %Include qdesktopservices.sip
 %Include qdrag.sip

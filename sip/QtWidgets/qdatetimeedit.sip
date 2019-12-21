@@ -119,6 +119,12 @@ public:
     void setCalendarWidget(QCalendarWidget *calendarWidget /Transfer/);
     Qt::TimeSpec timeSpec() const;
     void setTimeSpec(Qt::TimeSpec spec);
+%If (Qt_5_14_0 -)
+    QCalendar calendar() const;
+%End
+%If (Qt_5_14_0 -)
+    void setCalendar(QCalendar calendar);
+%End
 };
 
 class QTimeEdit : QDateTimeEdit

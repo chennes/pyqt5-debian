@@ -201,7 +201,7 @@ protected:
     virtual bool event(QEvent *);
     bool isComponentComplete() const;
     virtual void itemChange(QQuickItem::ItemChange, const QQuickItem::ItemChangeData &);
-    void updateInputMethod(Qt::InputMethodQueries queries = Qt::ImQueryInput);
+    void updateInputMethod(Qt::InputMethodQueries queries = Qt::InputMethodQuery::ImQueryInput);
     bool widthValid() const;
     bool heightValid() const;
     virtual void classBegin();

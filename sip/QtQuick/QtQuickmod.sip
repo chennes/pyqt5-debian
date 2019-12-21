@@ -62,6 +62,7 @@ WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 %Include qsggeometry.sip
 %Include qsgimagenode.sip
 %Include qsgmaterial.sip
+%Include qsgmaterialrhishader.sip
 %Include qsgnode.sip
 %Include qsgrectanglenode.sip
 %Include qsgrendererinterface.sip

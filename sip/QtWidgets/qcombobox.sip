@@ -151,4 +151,12 @@ public:
 %If (Qt_5_7_0 -)
     QVariant inputMethodQuery(Qt::InputMethodQuery query, const QVariant &argument) const;
 %End
+
+signals:
+%If (Qt_5_14_0 -)
+    void textActivated(const QString &);
+%End
+%If (Qt_5_14_0 -)
+    void textHighlighted(const QString &);
+%End
 };

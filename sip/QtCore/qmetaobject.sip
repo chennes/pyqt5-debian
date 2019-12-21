@@ -196,6 +196,9 @@ public:
     int propertyIndex() const;
     bool isConstant() const;
     bool isFinal() const;
+%If (Qt_5_14_0 -)
+    int relativePropertyIndex() const;
+%End
 };
 
 class QMetaClassInfo

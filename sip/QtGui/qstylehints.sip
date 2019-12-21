@@ -126,6 +126,14 @@ signals:
     void showShortcutsInContextMenusChanged(bool);
 %End
 
+public:
+%If (Qt_5_14_0 -)
+    int mouseDoubleClickDistance() const;
+%End
+%If (Qt_5_14_0 -)
+    int touchDoubleTapDistance() const;
+%End
+
 private:
     QStyleHints();
 };

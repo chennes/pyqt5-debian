@@ -347,6 +347,9 @@ public:
 %If (Qt_5_9_0 -)
     QString selectedMimeTypeFilter() const;
 %End
+%If (Qt_5_14_0 -)
+    static void saveFileContent(const QByteArray &fileContent, const QString &fileNameHint = QString()) /ReleaseGIL/;
+%End
 };
 
 QFlags<QFileDialog::Option> operator|(QFileDialog::Option f1, QFlags<QFileDialog::Option> f2);

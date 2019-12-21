@@ -288,6 +288,12 @@ public:
 %If (Qt_5_7_0 -)
     bool inverted() const;
 %End
+%If (Qt_5_14_0 -)
+    QPointF position() const;
+%End
+%If (Qt_5_14_0 -)
+    QPointF globalPosition() const;
+%End
 };
 
 class QTabletEvent : QInputEvent

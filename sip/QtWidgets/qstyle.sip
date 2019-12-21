@@ -715,6 +715,27 @@ public:
 %If (Qt_5_2_0 -)
         SP_LineEditClearButton,
 %End
+%If (Qt_5_14_0 -)
+        SP_DialogYesToAllButton,
+%End
+%If (Qt_5_14_0 -)
+        SP_DialogNoToAllButton,
+%End
+%If (Qt_5_14_0 -)
+        SP_DialogSaveAllButton,
+%End
+%If (Qt_5_14_0 -)
+        SP_DialogAbortButton,
+%End
+%If (Qt_5_14_0 -)
+        SP_DialogRetryButton,
+%End
+%If (Qt_5_14_0 -)
+        SP_DialogIgnoreButton,
+%End
+%If (Qt_5_14_0 -)
+        SP_RestoreDefaultsButton,
+%End
         SP_CustomBase,
     };
 

@@ -117,6 +117,12 @@ public:
     qreal length() const;
     QLineF unitVector() const;
     QLineF::IntersectType intersect(const QLineF &l, QPointF *intersectionPoint) const;
+%If (Qt_5_14_0 -)
+    typedef QLineF::IntersectType IntersectionType;
+%End
+%If (Qt_5_14_0 -)
+    QLineF::IntersectionType intersects(const QLineF &l, QPointF *intersectionPoint /Out/) const;
+%End
     bool operator!=(const QLineF &d) const;
     QLineF();
     QLineF(const QPointF &apt1, const QPointF &apt2);
