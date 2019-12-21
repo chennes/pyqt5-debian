@@ -2,6 +2,7 @@ pyqt5 (5.14.0+dfsg-1) UNRELEASED; urgency=medium
 
   * New upstream release.
   * Update debian/watch again, upstream tarballs are now on PyPI.
+  * Bump sip build-dependencies to 4.19.20, following configure.py.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Sat, 21 Dec 2019 15:25:20 +0300
 
