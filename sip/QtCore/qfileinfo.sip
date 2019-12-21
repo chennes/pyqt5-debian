@@ -98,6 +98,12 @@ public:
 %If (Qt_5_10_0 -)
     QDateTime fileTime(QFileDevice::FileTime time) const;
 %End
+%If (Qt_5_14_0 -)
+    bool isSymbolicLink() const;
+%End
+%If (Qt_5_14_0 -)
+    bool isShortcut() const;
+%End
 };
 
 typedef QList<QFileInfo> QFileInfoList;

@@ -175,6 +175,12 @@ public:
 %If (Qt_5_2_0 -)
         CustomCompileStep,
 %End
+%If (Qt_5_14_0 -)
+        SupportsRhiShader,
+%End
+%If (Qt_5_14_0 -)
+        RhiShaderWanted,
+%End
     };
 
     typedef QFlags<QSGMaterial::Flag> Flags;

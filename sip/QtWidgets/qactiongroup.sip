@@ -49,6 +49,26 @@ signals:
     void triggered(QAction *);
     void hovered(QAction *);
 
+public:
+%If (Qt_5_14_0 -)
+
+    enum class ExclusionPolicy
+    {
+        None,
+        Exclusive,
+        ExclusiveOptional,
+    };
+
+%End
+%If (Qt_5_14_0 -)
+    QActionGroup::ExclusionPolicy exclusionPolicy() const;
+%End
+
+public slots:
+%If (Qt_5_14_0 -)
+    void setExclusionPolicy(QActionGroup::ExclusionPolicy policy);
+%End
+
 private:
     QActionGroup(const QActionGroup &);
 };

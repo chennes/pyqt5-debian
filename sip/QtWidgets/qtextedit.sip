@@ -217,6 +217,14 @@ public:
 %If (Qt_5_10_0 -)
     void setTabStopDistance(qreal distance);
 %End
+%If (Qt_5_14_0 -)
+    QString toMarkdown(QTextDocument::MarkdownFeatures features = QTextDocument::MarkdownDialectGitHub) const;
+%End
+
+public slots:
+%If (Qt_5_14_0 -)
+    void setMarkdown(const QString &markdown);
+%End
 };
 
 QFlags<QTextEdit::AutoFormattingFlag> operator|(QTextEdit::AutoFormattingFlag f1, QFlags<QTextEdit::AutoFormattingFlag> f2);

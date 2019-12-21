@@ -89,6 +89,9 @@ public:
 %If (Qt_5_8_0 -)
     QTextFormat formatAt(const QPointF &pos) const;
 %End
+%If (Qt_5_14_0 -)
+    QTextBlock blockWithMarkerAt(const QPointF &pos) const;
+%End
 };
 
 class QTextObjectInterface /Mixin,PyQtInterface="org.qt-project.Qt.QTextObjectInterface"/

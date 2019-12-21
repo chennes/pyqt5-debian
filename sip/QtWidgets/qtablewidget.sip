@@ -52,9 +52,9 @@ public:
         UserType,
     };
 
-    explicit QTableWidgetItem(int type = Type);
-    QTableWidgetItem(const QString &text, int type = Type);
-    QTableWidgetItem(const QIcon &icon, const QString &text, int type = Type);
+    explicit QTableWidgetItem(int type = QTableWidgetItem::ItemType::Type);
+    QTableWidgetItem(const QString &text, int type = QTableWidgetItem::ItemType::Type);
+    QTableWidgetItem(const QIcon &icon, const QString &text, int type = QTableWidgetItem::ItemType::Type);
     QTableWidgetItem(const QTableWidgetItem &other);
     virtual ~QTableWidgetItem();
     virtual QTableWidgetItem *clone() const /Factory/;

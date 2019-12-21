@@ -128,9 +128,9 @@ public:
     qint64 maximumMessageLength() const;
     void pushGroup(const QString &name, GLuint id = 0, QOpenGLDebugMessage::Source source = QOpenGLDebugMessage::ApplicationSource);
     void popGroup();
-    void enableMessages(QOpenGLDebugMessage::Sources sources = QOpenGLDebugMessage::AnySource, QOpenGLDebugMessage::Types types = QOpenGLDebugMessage::AnyType, QOpenGLDebugMessage::Severities severities = QOpenGLDebugMessage::AnySeverity);
+    void enableMessages(QOpenGLDebugMessage::Sources sources = QOpenGLDebugMessage::AnySource, QOpenGLDebugMessage::Types types = QOpenGLDebugMessage::AnyType, QOpenGLDebugMessage::Severities severities = QOpenGLDebugMessage::Severity::AnySeverity);
     void enableMessages(const QVector<unsigned int> &ids, QOpenGLDebugMessage::Sources sources = QOpenGLDebugMessage::AnySource, QOpenGLDebugMessage::Types types = QOpenGLDebugMessage::AnyType);
-    void disableMessages(QOpenGLDebugMessage::Sources sources = QOpenGLDebugMessage::AnySource, QOpenGLDebugMessage::Types types = QOpenGLDebugMessage::AnyType, QOpenGLDebugMessage::Severities severities = QOpenGLDebugMessage::AnySeverity);
+    void disableMessages(QOpenGLDebugMessage::Sources sources = QOpenGLDebugMessage::AnySource, QOpenGLDebugMessage::Types types = QOpenGLDebugMessage::AnyType, QOpenGLDebugMessage::Severities severities = QOpenGLDebugMessage::Severity::AnySeverity);
     void disableMessages(const QVector<unsigned int> &ids, QOpenGLDebugMessage::Sources sources = QOpenGLDebugMessage::AnySource, QOpenGLDebugMessage::Types types = QOpenGLDebugMessage::AnyType);
     QList<QOpenGLDebugMessage> loggedMessages() const;
 

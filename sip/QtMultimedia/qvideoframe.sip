@@ -73,6 +73,9 @@ public:
 %If (Qt_5_13_0 -)
         Format_ABGR32,
 %End
+%If (Qt_5_14_0 -)
+        Format_YUV422P,
+%End
         Format_User,
     };
 

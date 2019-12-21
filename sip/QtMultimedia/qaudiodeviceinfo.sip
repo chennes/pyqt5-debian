@@ -46,4 +46,7 @@ public:
     QList<int> supportedChannelCounts() const;
     bool operator==(const QAudioDeviceInfo &other) const;
     bool operator!=(const QAudioDeviceInfo &other) const;
+%If (Qt_5_14_0 -)
+    QString realm() const;
+%End
 };

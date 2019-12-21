@@ -119,6 +119,12 @@ public:
 %If (Qt_5_12_0 -)
     void throwError(QJSValue::ErrorType errorType, const QString &message = QString());
 %End
+%If (Qt_5_14_0 -)
+    void setInterrupted(bool interrupted);
+%End
+%If (Qt_5_14_0 -)
+    bool isInterrupted() const;
+%End
 };
 
 %If (Qt_5_5_0 -)

@@ -383,6 +383,18 @@ enum /NoScope/
         IntType,
         UnsignedIntType,
         FloatType,
+%If (Qt_5_14_0 -)
+        Bytes2Type,
+%End
+%If (Qt_5_14_0 -)
+        Bytes3Type,
+%End
+%If (Qt_5_14_0 -)
+        Bytes4Type,
+%End
+%If (Qt_5_14_0 -)
+        DoubleType,
+%End
     };
 
 %End

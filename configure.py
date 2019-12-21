@@ -28,8 +28,8 @@ import sys
 
 
 # Initialise the constants.
-PYQT_VERSION_STR = "5.13.2"
-SIP_MIN_VERSION = '4.19.19'
+PYQT_VERSION_STR = "5.14.0"
+SIP_MIN_VERSION = '4.19.20'
 
 
 class ModuleMetadata:

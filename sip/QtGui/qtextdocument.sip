@@ -104,9 +104,15 @@ public:
 
     enum ResourceType
     {
+%If (Qt_5_14_0 -)
+        UnknownResource,
+%End
         HtmlResource,
         ImageResource,
         StyleSheetResource,
+%If (Qt_5_14_0 -)
+        MarkdownResource,
+%End
         UserResource,
     };
 
@@ -197,6 +203,25 @@ signals:
 public:
 %If (Qt_5_9_0 -)
     QString toRawText() const;
+%End
+%If (Qt_5_14_0 -)
+
+    enum MarkdownFeature
+    {
+        MarkdownNoHTML,
+        MarkdownDialectCommonMark,
+        MarkdownDialectGitHub,
+    };
+
+%End
+%If (Qt_5_14_0 -)
+    typedef QFlags<QTextDocument::MarkdownFeature> MarkdownFeatures;
+%End
+%If (Qt_5_14_0 -)
+    QString toMarkdown(QTextDocument::MarkdownFeatures features = QTextDocument::MarkdownDialectGitHub) const;
+%End
+%If (Qt_5_14_0 -)
+    void setMarkdown(const QString &markdown, QTextDocument::MarkdownFeatures features = QTextDocument::MarkdownDialectGitHub);
 %End
 };
 

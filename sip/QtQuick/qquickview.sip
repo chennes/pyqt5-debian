@@ -59,6 +59,9 @@ public:
 
 public slots:
     void setSource(const QUrl &) /ReleaseGIL/;
+%If (Qt_5_14_0 -)
+    void setInitialProperties(const QVariantMap &initialProperties);
+%End
 
 signals:
     void statusChanged(QQuickView::Status);

@@ -82,6 +82,9 @@ public:
 %If (Qt_5_9_0 -)
     QSGTexture::AnisotropyLevel anisotropyLevel() const;
 %End
+%If (Qt_5_14_0 -)
+    int comparisonKey() const;
+%End
 };
 
 class QSGDynamicTexture : QSGTexture
@@ -91,5 +94,8 @@ class QSGDynamicTexture : QSGTexture
 %End
 
 public:
+%If (Qt_5_14_0 -)
+    QSGDynamicTexture();
+%End
     virtual bool updateTexture() = 0;
 };

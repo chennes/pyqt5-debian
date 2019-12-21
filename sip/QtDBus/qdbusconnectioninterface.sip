@@ -51,6 +51,9 @@ public:
     };
 
     QDBusReply<QStringList> registeredServiceNames() const /ReleaseGIL/;
+%If (Qt_5_14_0 -)
+    QDBusReply<QStringList> activatableServiceNames() const /ReleaseGIL/;
+%End
     QDBusReply<bool> isServiceRegistered(const QString &serviceName) const /ReleaseGIL/;
     QDBusReply<QString> serviceOwner(const QString &name) const /ReleaseGIL/;
     QDBusReply<bool> unregisterService(const QString &serviceName) /ReleaseGIL/;

@@ -47,6 +47,9 @@ public:
             sipError = sipBadCallableArg(0, a0);
 %End
 
+%If (Qt_5_14_0 -)
+    QSignalSpy(const QObject *obj, const QMetaMethod &signal);
+%End
     bool isValid() const;
     QByteArray signal() const;
     bool wait(int timeout = 5000) /ReleaseGIL/;

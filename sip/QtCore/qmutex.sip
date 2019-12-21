@@ -28,6 +28,9 @@ class QMutexLocker
 
 public:
     explicit QMutexLocker(QMutex *m) /ReleaseGIL/;
+%If (Qt_5_14_0 -)
+    explicit QMutexLocker(QRecursiveMutex *m) /ReleaseGIL/;
+%End
     ~QMutexLocker();
     void unlock();
     void relock() /ReleaseGIL/;
@@ -77,3 +80,18 @@ bool isRecursive();
 private:
     QMutex(const QMutex &);
 };
+
+%If (Qt_5_14_0 -)
+
+class QRecursiveMutex : private QMutex /NoDefaultCtors/
+{
+%TypeHeaderCode
+#include <qmutex.h>
+%End
+
+public:
+    QRecursiveMutex();
+    ~QRecursiveMutex();
+};
+
+%End

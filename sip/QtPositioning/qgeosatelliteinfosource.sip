@@ -40,7 +40,13 @@ public:
     explicit QGeoSatelliteInfoSource(QObject *parent /TransferThis/);
     virtual ~QGeoSatelliteInfoSource();
     static QGeoSatelliteInfoSource *createDefaultSource(QObject *parent /TransferThis/) /Factory/;
+%If (Qt_5_14_0 -)
+    static QGeoSatelliteInfoSource *createDefaultSource(const QVariantMap &parameters, QObject *parent /TransferThis/) /Factory/;
+%End
     static QGeoSatelliteInfoSource *createSource(const QString &sourceName, QObject *parent /TransferThis/) /Factory/;
+%If (Qt_5_14_0 -)
+    static QGeoSatelliteInfoSource *createSource(const QString &sourceName, const QVariantMap &parameters, QObject *parent /TransferThis/) /Factory/;
+%End
     static QStringList availableSources();
     QString sourceName() const;
     virtual void setUpdateInterval(int msec);

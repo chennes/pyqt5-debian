@@ -307,12 +307,19 @@ signals:
 %If (Qt_5_11_0 -)
     void fontChanged(const QFont &font);
 %End
+
+public:
+%If (Qt_5_14_0 -)
+    static void setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy policy);
+%End
+%If (Qt_5_14_0 -)
+    static Qt::HighDpiScaleFactorRoundingPolicy highDpiScaleFactorRoundingPolicy();
+%End
 };
 
 %ModuleHeaderCode
 // Imports from QtCore.
-//typedef void (*pyqt5_qtgui_cleanup_qobjects_t)();
-typedef bool (*pyqt5_qtgui_cleanup_qobjects_t)();
+typedef void (*pyqt5_qtgui_cleanup_qobjects_t)();
 extern pyqt5_qtgui_cleanup_qobjects_t pyqt5_qtgui_cleanup_qobjects;
 
 typedef char **(*pyqt5_qtgui_from_argv_list_t)(PyObject *, int &);

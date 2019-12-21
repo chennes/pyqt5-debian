@@ -94,6 +94,9 @@ public:
 %If (Qt_5_11_0 -)
     int horizontalAdvance(const QString &, int length = -1) const;
 %End
+%If (Qt_5_14_0 -)
+    qreal fontDpi() const;
+%End
 };
 
 class QFontMetricsF
@@ -160,6 +163,9 @@ public:
 %End
 %If (Qt_5_11_0 -)
     qreal horizontalAdvance(const QString &string, int length = -1) const;
+%End
+%If (Qt_5_14_0 -)
+    qreal fontDpi() const;
 %End
 };
 

@@ -151,4 +151,10 @@ public:
 %If (Qt_5_10_0 -)
     bool isStrictTransportSecurityStoreEnabled() const;
 %End
+%If (Qt_5_14_0 -)
+    bool autoDeleteReplies() const;
+%End
+%If (Qt_5_14_0 -)
+    void setAutoDeleteReplies(bool autoDelete);
+%End
 };

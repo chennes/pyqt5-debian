@@ -64,6 +64,9 @@ public:
         NoInitialStateError,
         NoDefaultStateInHistoryStateError,
         NoCommonAncestorForTransitionError,
+%If (Qt_5_14_0 -)
+        StateMachineChildModeSetToParallelError,
+%End
     };
 
     explicit QStateMachine(QObject *parent /TransferThis/ = 0);

@@ -43,4 +43,7 @@ public:
     QMediaResource canonicalResource() const;
     QMediaResourceList resources() const;
     QMediaPlaylist *playlist() const;
+%If (Qt_5_14_0 -)
+    QNetworkRequest request() const;
+%End
 };

@@ -58,7 +58,16 @@ public:
 
 private:
     QCameraImageProcessing(QCamera *camera);
+
+protected:
+%If (Qt_5_14_0 -)
     virtual ~QCameraImageProcessing();
+%End
+
+private:
+%If (- Qt_5_14_0)
+    virtual ~QCameraImageProcessing();
+%End
     QCameraImageProcessing(const QCameraImageProcessing &);
 
 public:
