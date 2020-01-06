@@ -1,4 +1,4 @@
-pyqt5 (5.14.0+dfsg-1) UNRELEASED; urgency=medium
+pyqt5 (5.14.1+dfsg-1) UNRELEASED; urgency=medium
 
   * New upstream release.
   * Update debian/watch again, upstream tarballs are now on PyPI.
