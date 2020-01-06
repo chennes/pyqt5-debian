@@ -1,4 +1,32 @@
+2020-01-05  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* NEWS:
+	Released as v5.14.1.
+	[71a24375c1af] [5.14.1] <5.14-maint>
+
+2019-12-31  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* NEWS:
+	Updated the NEWS file.
+	[07df2e7706a8] <5.14-maint>
+
+2019-12-22  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* PyQt5.msp:
+	QThread.run() now releases the GIL.
+	[11d237de6d73] <5.14-maint>
+
+2019-12-20  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* lib/pyproject.toml:
+	Fixed 'requires' in pyproject.toml.
+	[2a2cb22e6c11] <5.14-maint>
+
 2019-12-17  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* .hgtags:
+	Added tag 5.14.0 for changeset ddf73b461beb
+	[96f0bf5fb354]
 
 	* NEWS:
 	Released as v5.14.0.
