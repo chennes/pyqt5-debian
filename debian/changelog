@@ -1,5 +1,6 @@
 pyqt5 (5.14.1+dfsg-2) UNRELEASED; urgency=medium
 
+  * Team upload.
   * python-*-dbg depends on python2-dbg instead of python-dbg. (Closes: #948495)
     - Patch by Matthias Klose
 
