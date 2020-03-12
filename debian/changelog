@@ -1,6 +1,7 @@
 pyqt5 (5.15.0+dfsg-2) UNRELEASED; urgency=medium
 
   * Switch from sip4 to sip5.
+  * Drop debian/patches/public_sip.diff, not needed with sip5.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Tue, 09 Jun 2020 15:29:28 +0300
 
