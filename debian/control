@@ -29,13 +29,15 @@ Build-Depends: debhelper-compat (= 11),
                python3-all-dev (>= 3.3.2-5~),
                python3-dbus,
                python3-dbus-dbg,
-               python3-sip-dbg,
-               python3-sip-dev (>= 4.19.23~),
+               python3-pyqtbuild,
+               python3-sipbuild,
+               python3-sipbuild-dbg,
                qtdeclarative5-dev (>= 5.9.1),
                qtlocation5-dev (>= 5.9.1),
                qtmultimedia5-dev (>= 5.9.1),
                qtpositioning5-dev (>= 5.9.1),
-               qttools5-dev (>= 5.9.1)
+               qttools5-dev (>= 5.9.1),
+               sip5-tools
 Build-Depends-Indep: fdupes
 Standards-Version: 4.5.0
 Homepage: https://riverbankcomputing.com/software/pyqt/intro
@@ -80,10 +82,7 @@ Description: Examples and demos for PyQt5
 
 Package: python3-pyqt5
 Architecture: any
-Depends: ${misc:Depends},
-         ${python3:Depends},
-         ${shlibs:Depends},
-         ${sip3:Depends}
+Depends: ${misc:Depends}, ${python3:Depends}, ${shlibs:Depends}
 Suggests: python3-pyqt5-dbg
 Description: Python 3 bindings for Qt5
  PyQt5 exposes the Qt5 API to Python 3. This package contains the following

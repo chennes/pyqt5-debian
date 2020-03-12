@@ -26,7 +26,6 @@ SPLIT=10
 
 DEFAULT_PYTHON := $(shell py3versions -vd)
 ALLPYTHONS := $(shell py3versions -vr)
-PYTHON_INCDIR = $(shell $(1) -c 'from distutils import sysconfig; print(sysconfig.get_python_inc())')
 
 DEB_HOST_ARCH ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
 
@@ -40,12 +39,11 @@ export QT_SELECT=qt5
 # LIBS_* is unset to avoid linking to too many libraries
 # STRIP is unset to let stripping be handled by dh_strip
 SHARED_CONFIGURE_OPTIONS=--confirm-license --verbose \
-	-q /usr/bin/qmake -c -j $(SPLIT) \
-	STRIP="" MOC=/usr/bin/moc \
-	LIBS_OPENGL="" LIBS_X11="" LIBS_THREAD="" \
-	QMAKE_CFLAGS+="${CFLAGS} ${CPPFLAGS}" \
-	QMAKE_CXXFLAGS+="${CXXFLAGS} ${CPPFLAGS}" \
-	QMAKE_LFLAGS+="${LDFLAGS}"
+	--concatenate $(SPLIT) \
+	--no-make \
+	--qmake-setting 'QMAKE_CFLAGS += "${CFLAGS} ${CPPFLAGS}"' \
+	--qmake-setting 'QMAKE_CXXFLAGS += "${CXXFLAGS} ${CPPFLAGS}"' \
+	--qmake-setting 'QMAKE_LFLAGS += "${LDFLAGS}"'
 
 
 .PRECIOUS: build-%/configure-stamp dbg-build-%/configure-stamp
@@ -54,24 +52,19 @@ configure: $(ALLPYTHONS:%=build-%/configure-stamp) $(ALLPYTHONS:%=dbg-build-%/co
 
 build-%/configure-stamp:
 	dh_testdir
-	mkdir -p build-$*
-	cp -r config-tests build-$*/
-	cd build-$* && python$* ../configure.py $(SHARED_CONFIGURE_OPTIONS) \
-			-d /usr/lib/python$*/dist-packages \
-			--sip-incdir $(call PYTHON_INCDIR, python$*) \
-			--no-sip-files \
+	python$* /usr/bin/sip-build $(SHARED_CONFIGURE_OPTIONS) \
+			--build-dir build-$* \
+			--target-dir /usr/lib/python$*/dist-packages \
 			$(if $(filter $(DEFAULT_PYTHON),$*),,--no-designer-plugin --no-qml-plugin)
 	sed -i '/strip/d' build-$*/*/Makefile
 	touch $@
 
 dbg-build-%/configure-stamp:
 	dh_testdir
-	mkdir -p dbg-build-$*
-	cp -r config-tests dbg-build-$*/
-	cd dbg-build-$* && python$*-dbg ../configure.py $(SHARED_CONFIGURE_OPTIONS) \
-			-d /usr/lib/python$*/dist-packages \
-			--sip-incdir $(call PYTHON_INCDIR, python$*-dbg) \
-			--debug --no-designer-plugin --no-qml-plugin --no-tools --no-sip-files
+	python$*-dbg /usr/bin/sip-build $(SHARED_CONFIGURE_OPTIONS) \
+			--build-dir dbg-build-$* \
+			--target-dir /usr/lib/python$*/dist-packages \
+			--debug --no-designer-plugin --no-qml-plugin --no-tools
 	sed -i '/strip/d' dbg-build-$*/*/Makefile
 	sed -i 's/-isystem/-I/' dbg-build-$*/*/Makefile
 	touch $@
@@ -210,7 +203,6 @@ binary-common:
 	dh_installman
 	dh_installchangelogs
 	dh_installdocs -A NEWS
-	dh_sip3
 ifeq (,$(findstring -i, $(DH_OPTIONS)))
 	DH_OPTIONS= dh_strip -ppyqt5-dev-tools
 	set -e; \
