@@ -1,3 +1,10 @@
+pyqt5 (5.14.1+dfsg-4) UNRELEASED; urgency=medium
+
+  * Drop the creation of .noinit file. It was needed for python-support
+    long time ago, and never used in this package.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Sat, 14 Mar 2020 14:56:50 +0300
+
 pyqt5 (5.14.1+dfsg-3) unstable; urgency=medium
 
   * Drop Python 2 support (closes: #937513).
