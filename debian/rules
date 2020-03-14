@@ -53,7 +53,7 @@ build-%/configure-stamp:
 	python$* /usr/bin/sip-build $(SHARED_CONFIGURE_OPTIONS) \
 			--build-dir build-$* \
 			--target-dir /usr/lib/python$*/dist-packages \
-			$(if $(filter $(DEFAULT_PYTHON),$*),,--no-designer-plugin --no-qml-plugin)
+			$(if $(filter $(DEFAULT_PYTHON),$*),--pep484-pyi,--no-designer-plugin --no-qml-plugin)
 	sed -i '/strip/d' build-$*/*/Makefile
 	touch $@
 
