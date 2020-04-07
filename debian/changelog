@@ -3,6 +3,7 @@ pyqt5 (5.14.2+dfsg-1) UNRELEASED; urgency=medium
   * New upstream release.
   * Drop the creation of .noinit file. It was needed for python-support
     long time ago, and never used in this package.
+  * Rebuild the designer and QML plugins with Python 3.8 (closes: #955621).
 
  -- Dmitry Shachnev <mitya57@debian.org>  Sat, 14 Mar 2020 14:56:50 +0300
 
