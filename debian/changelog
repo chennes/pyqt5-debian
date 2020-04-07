@@ -1,5 +1,6 @@
-pyqt5 (5.14.1+dfsg-4) UNRELEASED; urgency=medium
+pyqt5 (5.14.2+dfsg-1) UNRELEASED; urgency=medium
 
+  * New upstream release.
   * Drop the creation of .noinit file. It was needed for python-support
     long time ago, and never used in this package.
 
