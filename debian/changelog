@@ -5,6 +5,7 @@ pyqt5 (5.15.0+dfsg-2) UNRELEASED; urgency=medium
     - Build with sip-build instead of configure.py.
     - Drop debian/patches/public_sip.diff, not needed with sip5.
     - Install .sip files into the new location.
+    - Update runtime dependency of python3-pyqt5{,-dbg} and pyqt5-dev.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Sun, 14 Jun 2020 14:19:50 +0300
 
