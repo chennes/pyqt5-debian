@@ -84,19 +84,18 @@ install-indep: build-indep
 	dh_prep -i
 
 	# Install the files to temporary location to be able to use pyrcc5 below
-	mkdir -p tmp_install_root
-	$(MAKE) -C build-$(DEFAULT_PYTHON) install INSTALL_ROOT=$(CURDIR)/tmp_install_root
+	$(MAKE) -C build-$(DEFAULT_PYTHON) install INSTALL_ROOT=$(CURDIR)/debian/tmp
 
 	dh_installdirs -i
 	dh_install -i
 	dh_installexamples -Xactiveqt -i
 	# Use python3 shebangs and regenerate resource files
-	export PYTHONPATH=$(CURDIR)/tmp_install_root/usr/lib/python3/dist-packages; \
+	export PYTHONPATH=$(CURDIR)/debian/tmp/usr/lib/python3/dist-packages; \
 	cd $(CURDIR)/debian/pyqt5-examples/usr/share/doc/pyqt5-examples/examples/; \
 		cp --preserve=timestamps /usr/share/javascript/jquery/jquery.min.js webkit/fancybrowser/; \
 		find . -name '*.py' -exec sed -i 's/\/env python/\/python3/g' {} +; \
 		find . -name '*.qrc' | sed 's/\.qrc//g' | QT_HASH_SEED=0 xargs -I {} \
-		$(CURDIR)/tmp_install_root/usr/bin/pyrcc5 {}.qrc -o {}_rc.py
+		$(CURDIR)/debian/tmp/usr/bin/pyrcc5 {}.qrc -o {}_rc.py
 	# Symlink duplicate files in examples. Based on Andrew Starr-Bochicchio's
 	# code in ubuntu-packaging-guide.
 	cd $(CURDIR)/debian/pyqt5-examples && \
@@ -138,7 +137,6 @@ clean:
 	dh_testdir
 	dh_testroot
 	rm -rf $(ALLPYTHONS:%=build-%) $(ALLPYTHONS:%=dbg-build-%)
-	rm -rf tmp_install_root
 	find . -type f -name .DS_Store -delete
 	find . -type f -name *.pyc -delete
 	find . -type d -name __pycache__ -delete
