@@ -18,7 +18,7 @@ else
 	LDFLAGS += $(shell dpkg-buildflags --get LDFLAGS)
 endif
 
-LDFLAGS += -Wl,-O1 -Wl,--as-needed
+LDFLAGS += -Wl,-O1
 
 SPLIT=10
 
