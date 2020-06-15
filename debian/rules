@@ -42,9 +42,12 @@ SHARED_CONFIGURE_OPTIONS=--confirm-license --verbose \
 	--qmake-setting 'QMAKE_LFLAGS += "${LDFLAGS}"'
 
 
-.PRECIOUS: build-%/configure-stamp dbg-build-%/configure-stamp
+%:
+	dh $@ --with python3
 
-configure: $(ALLPYTHONS:%=build-%/configure-stamp) $(ALLPYTHONS:%=dbg-build-%/configure-stamp)
+override_dh_auto_configure-arch: $(ALLPYTHONS:%=build-%/configure-stamp) $(ALLPYTHONS:%=dbg-build-%/configure-stamp)
+
+override_dh_auto_configure-indep: build-$(DEFAULT_PYTHON)/configure-stamp
 
 build-%/configure-stamp:
 	dh_testdir
@@ -63,10 +66,9 @@ dbg-build-%/configure-stamp:
 	sed -i 's/-isystem/-I/' dbg-build-$*/*/Makefile
 	touch $@
 
+override_dh_auto_build-arch: $(ALLPYTHONS:%=build-%/build-stamp) $(ALLPYTHONS:%=dbg-build-%/build-stamp)
 
-build: build-arch build-indep
-build-arch: $(ALLPYTHONS:%=build-%/build-stamp) $(ALLPYTHONS:%=dbg-build-%/build-stamp)
-build-indep: build-$(DEFAULT_PYTHON)/build-stamp
+override_dh_auto_build-indep: build-$(DEFAULT_PYTHON)/build-stamp
 
 build-%/build-stamp: build-%/configure-stamp
 	dh_testdir
@@ -78,16 +80,10 @@ dbg-build-%/build-stamp: dbg-build-%/configure-stamp
 	dh_auto_build --parallel -B dbg-build-$*
 	touch $@
 
-install-indep: build-indep
-	dh_testdir
-	dh_testroot
-	dh_prep -i
-
-	# Install the files to temporary location to be able to use pyrcc5 below
+override_dh_auto_install-indep:
 	$(MAKE) -C build-$(DEFAULT_PYTHON) install INSTALL_ROOT=$(CURDIR)/debian/tmp
 
-	dh_installdirs -i
-	dh_install -i
+override_dh_installexamples-indep:
 	dh_installexamples -Xactiveqt -i
 	# Use python3 shebangs and regenerate resource files
 	export PYTHONPATH=$(CURDIR)/debian/tmp/usr/lib/python3/dist-packages; \
@@ -106,55 +102,29 @@ install-indep: build-indep
 			rm $$d; ln -s /$$f $$d; \
 		done; \
 	done
-	dh_link -i
 
-install-arch: build-arch
-	dh_testdir
-	dh_testroot
-	dh_prep -a
-	dh_installdirs -a
-	# This is needed to enforce that the install-arch-% rules are
-	# not run in parallel. Both rules install into the same directory,
-	# and therefore might try to access the same files at the same time.
-	# Therefore, instead of depending on the install-arch-% rules,
-	# we invoke them explicitly.
-	for p in $(ALLPYTHONS) ; do \
-		$(MAKE) -f debian/rules install-arch-$$p;\
+override_dh_auto_install-arch:
+	set -e; for p in $(ALLPYTHONS); do \
+		$(MAKE) -C build-$$p install INSTALL_ROOT=$(CURDIR)/debian/tmp; \
+		$(MAKE) -C dbg-build-$$p install INSTALL_ROOT=$(CURDIR)/debian/tmp; \
 	done
 
-	dh_install -a
-	dh_missing --fail-missing
+execute_after_dh_install-arch:
 	sed -i 's,/usr/bin/python3[.0-9]*,/usr/bin/python3,' debian/pyqt5-dev-tools/usr/bin/*
 
-	find debian/python*-dbg ! -type d \
-		! \( -name '*.so' -o -name '*config_*d*.py' \) | xargs rm -f
-
-install-arch-3.%:
-	$(MAKE) -C build-3.$* install INSTALL_ROOT=$(CURDIR)/debian/tmp
-	$(MAKE) -C dbg-build-3.$* install INSTALL_ROOT=$(CURDIR)/debian/tmp
-
-clean:
-	dh_testdir
-	dh_testroot
+override_dh_auto_clean:
 	rm -rf $(ALLPYTHONS:%=build-%) $(ALLPYTHONS:%=dbg-build-%)
 	find . -type f -name .DS_Store -delete
 	find . -type f -name *.pyc -delete
 	find . -type d -name __pycache__ -delete
 	cd sip; rm -rf Qt opengl_types.sip pyqt-gpl.sip5
 	rm -f examples/quick/tutorials/extending/chapter6-plugins/Charts/qmldir
-	dh_clean
 
-# Must not depend on anything. This is to be called by
-# binary-arch/binary-indep
-# in another 'make' thread.
-binary-common:
-	dh_testdir
-	dh_testroot
-	dh_installman
-	dh_installchangelogs
+override_dh_installdocs:
 	dh_installdocs -A NEWS
-ifeq (,$(findstring -i, $(DH_OPTIONS)))
-	DH_OPTIONS= dh_strip -ppyqt5-dev-tools
+
+override_dh_strip-arch:
+	dh_strip -ppyqt5-dev-tools
 	set -e; \
 	for p in $(PY_PACKAGE_NAMES:%=python3-%); do \
 		DH_OPTIONS= dh_strip -p$$p --dbg-package=$$p-dbg; \
@@ -162,32 +132,12 @@ ifeq (,$(findstring -i, $(DH_OPTIONS)))
 		mkdir -p debian/$$p-dbg/usr/share/doc; \
 		ln -s $$p debian/$$p-dbg/usr/share/doc/$$p-dbg; \
 	done
-endif
+
+override_dh_python3:
 	dh_python3 --no-dbg-cleaning -N pyqt5-examples
+
+execute_after_dh_install:
 	rm -rf $(CURDIR)/debian/python3-pyqt5/usr/lib/python3/dist-packages/PyQt5/uic/port_v2
-	rm -rf $(CURDIR)/debian/python3-pyqt5-dbg/usr/bin
-	rm -rf $(CURDIR)/debian/python3-pyqt5-dbg/usr/lib/python3/dist-packages/PyQt5/uic
-	rm -rf $(CURDIR)/debian/python3-pyqt5-dbg/usr/lib/python3/dist-packages/dbus
 	rm -rf $(CURDIR)/debian/pyqt5-examples/usr/share/doc/pyqt5-examples/examples/webkit/googlechat
 	rm -rf $(CURDIR)/debian/pyqt5-examples/usr/share/doc/pyqt5-examples/examples/designer/plugins/python/__pycache__
 	rm -rf $(CURDIR)/debian/pyqt5-examples/usr/share/doc/pyqt5-examples/examples/designer/plugins/widgets/__pycache__
-	dh_fixperms
-	dh_compress -X/examples
-	dh_installdeb
-	dh_shlibdeps
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
-
-# Build architecture independant packages using the common target.
-binary-indep: install-indep
-	$(MAKE) -f debian/rules DH_OPTIONS="-i ${EXTRA_DH_OPTIONS}" binary-common
-
-# Build architecture dependant packages using the common target.
-binary-arch: install-arch
-	$(MAKE) -f debian/rules DH_OPTIONS="-a ${EXTRA_DH_OPTIONS}" binary-common
-
-
-binary: binary-arch binary-indep
-
-.PHONY: build-indep build-arch build clean binary-indep binary-arch binary configure
