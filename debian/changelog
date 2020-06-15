@@ -7,6 +7,7 @@ pyqt5 (5.15.0+dfsg-2) UNRELEASED; urgency=medium
     - Install .sip files into the new location.
     - Update runtime dependency of python3-pyqt5{,-dbg} and pyqt5-dev.
   * Drop -Wl,--as-needed from LDFLAGS, it is default in Bullseye.
+  * Update to debhelper compat level 13.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Sun, 14 Jun 2020 14:19:50 +0300
 
