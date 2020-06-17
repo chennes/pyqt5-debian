@@ -88,6 +88,9 @@ Depends: python3-pyqt5.sip (<< 13),
          ${python3:Depends},
          ${shlibs:Depends}
 Suggests: python3-pyqt5-dbg
+Breaks: python3-pyqt5.qsci (<< 2.11.5~),
+        python3-pyqt5.qtchart (<< 5.15~),
+        python3-pyqt5.qtwebengine (<< 5.15.0-1+exp1~)
 Description: Python 3 bindings for Qt5
  PyQt5 exposes the Qt5 API to Python 3. This package contains the following
  modules:
