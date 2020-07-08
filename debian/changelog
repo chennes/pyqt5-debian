@@ -1,3 +1,10 @@
+pyqt5 (5.15.0+dfsg-1+exp3) UNRELEASED; urgency=medium
+
+  [ Alexander Volkov ]
+  * Add package python3-pyqt5.qtremoteobjects for QtRemoteObjects module.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 08 Jul 2020 14:12:53 +0300
+
 pyqt5 (5.15.0+dfsg-1+exp2) experimental; urgency=medium
 
   * Rebuild against Qt 5.14, to make module-tags in Qt*.toml files updated.
