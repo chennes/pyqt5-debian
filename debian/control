@@ -12,6 +12,7 @@ Build-Depends: debhelper-compat (= 13),
                libjs-jquery,
                libpulse-dev,
                libqt5opengl5-dev (>= 5.9.1),
+               libqt5remoteobjects5-dev,
                libqt5sensors5-dev (>= 5.9.1),
                libqt5serialport5-dev (>= 5.9.1),
                libqt5svg5-dev (>= 5.9.1),
@@ -166,6 +167,32 @@ Depends: python3-dbg,
 Description: Python 3 bindings for Qt5's OpenGL module (debug extension)
  The OpenGL module of PyQt5 provides widgets and utility classes
  for OpenGL rendering in a PyQt5 application.
+ .
+ This package contains the extension built for the Python 3 debug interpreter.
+
+Package: python3-pyqt5.qtremoteobjects
+Architecture: any
+Depends: python3-pyqt5 (= ${binary:Version}),
+         ${misc:Depends},
+         ${python3:Depends},
+         ${shlibs:Depends}
+Description: Python 3 bindings for Qt5's RemoteObjects module
+ The QtRemoteObjects module extends Qt's existing functionalities to enable
+ information exchange between processes or computers.
+ .
+ This package contains the Python 3 version of this module.
+
+Package: python3-pyqt5.qtremoteobjects-dbg
+Section: debug
+Architecture: any
+Depends: python3-dbg,
+         python3-pyqt5-dbg (= ${binary:Version}),
+         python3-pyqt5.qtremoteobjects (= ${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Description: Python 3 bindings for Qt5's RemoteObjects module (debug extensions)
+ The QtRemoteObjects module extends Qt's existing functionalities to enable
+ information exchange between processes or computers.
  .
  This package contains the extension built for the Python 3 debug interpreter.
 
