@@ -26,7 +26,7 @@ DEFAULT_PYTHON := $(shell py3versions -vd)
 ALLPYTHONS := $(shell py3versions -vr)
 
 PYQT_MODULES := opengl remoteobjects sql webchannel webkit websockets xmlpatterns svg \
-	multimedia quick serialport sensors x11extras positioning
+	multimedia quick serialport sensors x11extras positioning bluetooth nfc networkauth
 
 PY_PACKAGE_NAMES := pyqt5 $(PYQT_MODULES:%=pyqt5.qt%) dbus.mainloop.pyqt5
 
