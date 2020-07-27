@@ -1,3 +1,9 @@
+pyqt5 (5.15.0+dfsg-1+exp4) UNRELEASED; urgency=low
+
+  * Set field Upstream-Name in debian/copyright.
+
+ -- Debian Janitor <janitor@jelmer.uk>  Mon, 27 Jul 2020 17:36:26 -0000
+
 pyqt5 (5.15.0+dfsg-1+exp3) experimental; urgency=medium
 
   * Add new binary packages:
