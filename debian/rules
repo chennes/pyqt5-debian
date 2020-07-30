@@ -72,12 +72,12 @@ override_dh_auto_build-indep: build-$(DEFAULT_PYTHON)/build-stamp
 
 build-%/build-stamp: build-%/configure-stamp
 	dh_testdir
-	dh_auto_build --parallel -B build-$*
+	dh_auto_build -B build-$*
 	touch $@
 
 dbg-build-%/build-stamp: dbg-build-%/configure-stamp
 	dh_testdir
-	dh_auto_build --parallel -B dbg-build-$*
+	dh_auto_build -B dbg-build-$*
 	touch $@
 
 override_dh_auto_install-indep:
