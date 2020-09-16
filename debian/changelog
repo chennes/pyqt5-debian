@@ -1,8 +1,12 @@
-pyqt5 (5.15.0+dfsg-1+exp4) UNRELEASED; urgency=low
+pyqt5 (5.15.1+dfsg-1) UNRELEASED; urgency=medium
 
+  [ Debian Janitor ]
   * Set field Upstream-Name in debian/copyright.
   * Drop unnecessary dh arguments: --parallel, --parallel
   * Fix day-of-week for changelog entry 5.0-1.
+
+  [ Dmitry Shachnev ]
+  * New upstream release.
 
  -- Debian Janitor <janitor@jelmer.uk>  Mon, 27 Jul 2020 17:36:26 -0000
 
