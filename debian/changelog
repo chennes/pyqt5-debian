@@ -8,6 +8,7 @@ pyqt5 (5.15.1+dfsg-1) UNRELEASED; urgency=medium
   [ Dmitry Shachnev ]
   * New upstream release.
   * Backport upstream patch to make bound signals hashable.
+  * Add a patch to make QtTextToSpeech module buildable with Qt 5.14.
 
   [ Alexander Volkov ]
   * Add python3-pyqt5.qttexttospeech package for QtTextToSpeech module.
