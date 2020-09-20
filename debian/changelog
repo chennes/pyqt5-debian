@@ -1,4 +1,4 @@
-pyqt5 (5.15.1+dfsg-1) UNRELEASED; urgency=medium
+pyqt5 (5.15.1+dfsg-1) experimental; urgency=medium
 
   [ Debian Janitor ]
   * Set field Upstream-Name in debian/copyright.
@@ -13,7 +13,7 @@ pyqt5 (5.15.1+dfsg-1) UNRELEASED; urgency=medium
   [ Alexander Volkov ]
   * Add python3-pyqt5.qttexttospeech package for QtTextToSpeech module.
 
- -- Debian Janitor <janitor@jelmer.uk>  Mon, 27 Jul 2020 17:36:26 -0000
+ -- Dmitry Shachnev <mitya57@debian.org>  Sun, 20 Sep 2020 11:23:00 +0300
 
 pyqt5 (5.15.0+dfsg-1+exp3) experimental; urgency=medium
 
