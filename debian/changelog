@@ -1,3 +1,9 @@
+pyqt5 (5.15.1+dfsg-3) UNRELEASED; urgency=medium
+
+  * Break calibre < 5.0 (see #970921).
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Fri, 25 Sep 2020 21:40:19 +0300
+
 pyqt5 (5.15.1+dfsg-2) unstable; urgency=medium
 
   * Upload to unstable.
