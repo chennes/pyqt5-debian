@@ -476,7 +476,7 @@ public:
         
         switch (a1)
         {
-        #if defined(GL_TEXTURE_SWIZZLE_RGBA) || defined(GL_TEXTURE_SWIZZLE_RGBA)
+        #if defined(GL_TEXTURE_SWIZZLE_RGBA) || defined(GL_TEXTURE_BORDER_COLOR)
         #if defined(GL_TEXTURE_SWIZZLE_RGBA)
         case GL_TEXTURE_SWIZZLE_RGBA:
         #endif
@@ -503,7 +503,7 @@ public:
         
         switch (a1)
         {
-        #if defined(GL_TEXTURE_SWIZZLE_RGBA) || defined(GL_TEXTURE_SWIZZLE_RGBA)
+        #if defined(GL_TEXTURE_SWIZZLE_RGBA) || defined(GL_TEXTURE_BORDER_COLOR)
         #if defined(GL_TEXTURE_SWIZZLE_RGBA)
         case GL_TEXTURE_SWIZZLE_RGBA:
         #endif

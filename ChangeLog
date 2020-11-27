@@ -1,4 +1,92 @@
+2020-11-23  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* NEWS:
+	Released as v5.12.2.
+	[ddf234c8c683] [5.15.2] <5.15-maint>
+
+	* NEWS:
+	Updated the NEWS file.
+	[a4088498ec1a] <5.15-maint>
+
+2020-11-13  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* qpy/QtCore/qpycore_pyqtsignal.cpp, qpy/QtCore/qpycore_pyqtslot.cpp:
+	Eliminated a couple of Python deprecation warnings.
+	[a868cf5559cb] <5.15-maint>
+
+2020-10-30  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* PyQt5.msp:
+	Fixed some typos in the OpenGL bindings.
+	[d824696aef6b] <5.15-maint>
+
+2020-10-28  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* PyQt5.msp:
+	Updated to project v15.
+	[6cc6247a25e1] <5.15-maint>
+
+2020-10-04  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* designer/pluginloader.cpp, qmlscene/pluginloader.cpp:
+	Eliminate deprecation warnings from Python v3.9.
+	[ba17824001af] <5.15-maint>
+
+	* PyQt5.msp:
+	Ensure that QtQuick will build without OpenGL.
+	[9625e73814d4] <5.15-maint>
+
+2020-09-28  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* PyQt5.msp:
+	Added a missing /TransferBack/ annotation to QLayout.removeWidget().
+	[230f954c1920] <5.15-maint>
+
+2020-09-27  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* qpy/QtCore/qpycore_pyqtboundsignal.cpp:
+	Fixed hashable signals for unsupported versions of Python.
+	[32f6a9018722] <5.15-maint>
+
+2020-09-24  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* PyQt5.msp:
+	Fixed QActionGroup.ExclusionPolicy.None and
+	QOcspRevocationReason.None.
+	[cdcf3488537b] <5.15-maint>
+
+2020-09-18  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* lib/project.py:
+	Check the version of Qt is supported.
+	[50527038fe31] <5.15-maint>
+
+2020-09-17  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* lib/project.py, lib/pyproject.toml:
+	Require PyQt-builder v1.6 as we no longer specify the sip module and
+	ABI.
+	[0f86b0b9bb21] <5.15-maint>
+
+	* PyQt5.msp:
+	Added the QT_MAC_WANTS_LAYER workaround for lost paint events.
+	[183a91751895] <5.15-maint>
+
+	* PyQt5.msp, lib/SubclassCode/QtMultimedia.versions:
+	Fixed building against Qt v5.10 and earlier.
+	[29e2ebf17db3] <5.15-maint>
+
+2020-09-14  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* NEWS, qpy/QtCore/qpycore_pyqtboundsignal.cpp:
+	Bound signals are now hashable.
+	[4318b62d0575] <5.15-maint>
+
 2020-09-11  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* .hgtags:
+	Added tag 5.15.1 for changeset f99d8e2299f1
+	[2e783d474267] <5.15-maint>
 
 	* NEWS:
 	Released as v5.15.1.

@@ -54,7 +54,9 @@ PyQt5QmlPlugin::PyQt5QmlPlugin(QObject *parent) : QQmlExtensionPlugin(parent),
 
 #ifdef WITH_THREAD
             // Make sure we don't have the GIL.
+#if PY_VERSION_HEX < 0x03070000
             PyEval_InitThreads();
+#endif
             PyEval_SaveThread();
 #endif
         }
