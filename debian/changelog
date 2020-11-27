@@ -4,6 +4,7 @@ pyqt5 (5.15.2+dfsg-1) UNRELEASED; urgency=medium
   * Drop qtspeech_5.14.diff, not needed since we upgraded to Qt 5.15.
   * New upstream release.
   * Bump required python3-pyqtbuild version to 1.6.
+  * Drop hashable_signals.diff, included in the new release.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Fri, 25 Sep 2020 21:40:19 +0300
 
