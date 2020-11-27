@@ -1,6 +1,7 @@
 pyqt5 (5.15.1+dfsg-3) UNRELEASED; urgency=medium
 
   * Break calibre < 5.0 (see #970921).
+  * Drop qtspeech_5.14.diff, not needed since we upgraded to Qt 5.15.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Fri, 25 Sep 2020 21:40:19 +0300
 
