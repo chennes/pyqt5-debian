@@ -33,8 +33,7 @@ class PyQt(PyQtProject):
     def __init__(self):
         """ Initialise the project. """
 
-        super().__init__(sip_module='PyQt5.sip', abi_version='12.8',
-                dunder_init=True, tag_prefix='Qt',
+        super().__init__(dunder_init=True, tag_prefix='Qt',
                 console_scripts=[
                     'pylupdate5 = PyQt5.pylupdate_main:main',
                     'pyrcc5 = PyQt5.pyrcc_main:main',
@@ -155,6 +154,12 @@ del find_qt
 
         if tool not in Option.BUILD_TOOLS:
             return
+
+        # Check we support the version of Qt.
+        if self.builder.qt_version >> 16 != 5:
+            raise UserException(
+                    "Qt v5 is required, not v{0}".format(
+                            self.builder.qt_version_str))
 
         # Automatically confirm the license if there might not be a command
         # line option to do so.

@@ -244,7 +244,7 @@ PyObject *PyQtSlot::call(PyObject *callable, PyObject *args) const
     {
         PyObject *nsa, *xtype, *xvalue, *xtb, *res;
 
-        if ((res = PyEval_CallObject(callable, sa)) != NULL)
+        if ((res = PyObject_Call(callable, sa, NULL)) != NULL)
         {
             // Remove any previous exception.
 

@@ -859,7 +859,7 @@ PyObject *qpycore_call_signal_overload(qpycore_pyqtSignal *ps, PyObject *bound,
     if (!func)
         return 0;
 
-    PyObject *result = PyCFunction_Call(func, args, kw);
+    PyObject *result = PyObject_Call(func, args, kw);
 
     Py_DECREF(func);
 

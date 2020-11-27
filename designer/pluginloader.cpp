@@ -130,7 +130,9 @@ PyCustomWidgets::PyCustomWidgets(QObject *parent) : QObject(parent),
 
 #ifdef WITH_THREAD
             // Make sure we don't have the GIL.
+#if PY_VERSION_HEX < 0x03070000
             PyEval_InitThreads();
+#endif
             PyEval_SaveThread();
 #endif
         }
