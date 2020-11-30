@@ -1,4 +1,4 @@
-pyqt5 (5.15.2+dfsg-1) UNRELEASED; urgency=medium
+pyqt5 (5.15.2+dfsg-1) unstable; urgency=medium
 
   * Break calibre < 5.0 (see #970921).
   * Drop qtspeech_5.14.diff, not needed since we upgraded to Qt 5.15.
@@ -7,7 +7,7 @@ pyqt5 (5.15.2+dfsg-1) UNRELEASED; urgency=medium
   * Drop hashable_signals.diff, included in the new release.
   * Bump Standards-Version to 4.5.1, no changes needed.
 
- -- Dmitry Shachnev <mitya57@debian.org>  Fri, 25 Sep 2020 21:40:19 +0300
+ -- Dmitry Shachnev <mitya57@debian.org>  Mon, 30 Nov 2020 19:02:03 +0300
 
 pyqt5 (5.15.1+dfsg-2) unstable; urgency=medium
 
