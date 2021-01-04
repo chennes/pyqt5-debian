@@ -1,3 +1,10 @@
+pyqt5 (5.15.2+dfsg-2) UNRELEASED; urgency=medium
+
+  * Install the PEP 561 py.typed file (closes: #978586).
+    - Build-depend on python3-sipbuild ≥ 5.5.0+dfsg-2 for this.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Mon, 04 Jan 2021 20:22:18 +0300
+
 pyqt5 (5.15.2+dfsg-1) unstable; urgency=medium
 
   * Break calibre < 5.0 (see #970921).
