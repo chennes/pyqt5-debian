@@ -1,3 +1,10 @@
+pyqt5 (5.15.2+dfsg-3) UNRELEASED; urgency=medium
+
+  * Build-depend on sip-tools instead of sip5-tools, in preparation for
+    SIP v6.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Fri, 08 Jan 2021 21:54:04 +0300
+
 pyqt5 (5.15.2+dfsg-2) unstable; urgency=medium
 
   * Install the PEP 561 py.typed file (closes: #978586).
