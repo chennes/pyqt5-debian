@@ -1,11 +1,11 @@
-pyqt5 (5.15.2+dfsg-3) UNRELEASED; urgency=medium
+pyqt5 (5.15.2+dfsg-3) unstable; urgency=medium
 
   * Build-depend on sip-tools instead of sip5-tools, in preparation for
     SIP v6.
   * Limit the qtconnectivity packages to linux-any (closes: #980031).
     Thanks Samuel Thibault for the patch!
 
- -- Dmitry Shachnev <mitya57@debian.org>  Fri, 08 Jan 2021 21:54:04 +0300
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 13 Jan 2021 21:52:29 +0300
 
 pyqt5 (5.15.2+dfsg-2) unstable; urgency=medium
 
