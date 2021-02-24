@@ -1,6 +1,6 @@
 // This defines the API exposed by the Python extension module.
 //
-// Copyright (c) 2020 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2021 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -23,7 +23,7 @@
 %Import QtCore/QtCoremod.sip
 
 %Copying
-Copyright (c) 2020 Riverbank Computing Limited <info@riverbankcomputing.com>
+Copyright (c) 2021 Riverbank Computing Limited <info@riverbankcomputing.com>
 
 This file is part of PyQt5.
 
@@ -50,11 +50,11 @@ WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 %End
 
 
-void fetchtr_py(const char *fileName, MetaTranslator *tor,
+void fetchtr_py(const char *fileName /Encoding="None"/, MetaTranslator *tor,
         const char *defaultContext, bool mustExist, const char *codecForSource,
         const char *tr_func, const char *translate_func);
 
-void fetchtr_ui(const char *fileName, MetaTranslator *tor,
+void fetchtr_ui(const char *fileName /Encoding="None"/, MetaTranslator *tor,
         const char *defaultContext, bool mustExist);
 
 void merge(const MetaTranslator *tor, const MetaTranslator *virginTor,

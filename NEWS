@@ -1,3 +1,11 @@
+v5.15.3 23rd February 2021
+  - Added the missing QImage.setAlphaChannel().
+  - Support for the QtNetworkAuth library has been moved to a separate
+    PyQtNetworkAuth package.
+  - Wheels now assume that the corresponding Qt libraries are in an external
+    wheel rather than being bundled.
+  - Bug fixes.
+
 v5.15.2 23rd November 2020
   - Bound signals are now hashable.
   - The QT_MAC_WANTS_LAYER environment variable is automatically set on macOS.

@@ -1,6 +1,6 @@
 // This implements the public API provided by PyQt to external packages.
 //
-// Copyright (c) 2020 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2021 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -464,6 +464,9 @@ void pyqt5_update_argv_list(PyObject *argv_list, int argc, char **argv)
         else
             PyList_SetSlice(argv_list, na, na + 1, 0);
     }
+
+    // Assume that we have created a QCoreApplication instance.
+    qpycore_created_qapp = true;
 }
 
 

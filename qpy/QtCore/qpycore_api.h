@@ -1,6 +1,6 @@
 // This defines the API provided by this library.
 //
-// Copyright (c) 2020 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2021 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -112,6 +112,10 @@ void qpycore_Unicode_ConcatAndDel(PyObject **string, PyObject *newpart);
 // Initialisation.
 void qpycore_init();
 void qpycore_post_init(PyObject *module_dict);
+
+
+// Termination.
+extern bool qpycore_created_qapp;
 
 
 #endif
