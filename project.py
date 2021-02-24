@@ -1,6 +1,6 @@
 # This is the PyQt5 build script.
 #
-# Copyright (c) 2020 Riverbank Computing Limited <info@riverbankcomputing.com>
+# Copyright (c) 2021 Riverbank Computing Limited <info@riverbankcomputing.com>
 # 
 # This file is part of PyQt5.
 # 
@@ -43,8 +43,8 @@ class PyQt(PyQtProject):
         self.bindings_factories = [Qt, QtCore, QtNetwork, QtGui, QtWidgets,
             QtQml, QAxContainer, QtAndroidExtras, QtBluetooth, QtDBus,
             QtDesigner, Enginio, QtHelp, QtMacExtras, QtMultimedia,
-            QtMultimediaWidgets, QtNetworkAuth, QtNfc, QtOpenGL, QtPositioning,
-            QtLocation, QtPrintSupport, QtQuick, QtQuick3D, QtQuickWidgets,
+            QtMultimediaWidgets, QtNfc, QtOpenGL, QtPositioning, QtLocation,
+            QtPrintSupport, QtQuick, QtQuick3D, QtQuickWidgets,
             QtRemoteObjects, QtSensors, QtSerialPort, QtSql, QtSvg, QtTest,
             QtTextToSpeech, QtWebChannel, QtWebKit, QtWebKitWidgets,
             QtWebSockets, QtWinExtras, QtX11Extras, QtXml, QtXmlPatterns,
@@ -760,19 +760,6 @@ class QtNetwork(PyQtBindings):
         """ Initialise the bindings. """
 
         super().__init__(project, 'QtNetwork', qmake_QT=['network', '-gui'])
-
-
-class QtNetworkAuth(PyQtBindings):
-    """ The QtNetworkAuth bindings. """
-
-    def __init__(self, project):
-        """ Initialise the bindings. """
-
-        super().__init__(project, 'QtNetworkAuth',
-                qmake_CONFIG=['c++11'],
-                qmake_QT=['network', 'networkauth', '-gui'],
-                test_headers=['qtnetworkauthversion.h'],
-                test_statement='const char *v = QTNETWORKAUTH_VERSION_STR')
 
 
 class QtNfc(PyQtBindings):

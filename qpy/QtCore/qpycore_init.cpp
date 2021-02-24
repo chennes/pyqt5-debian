@@ -1,6 +1,6 @@
 // This is the initialisation support code for the QtCore module.
 //
-// Copyright (c) 2020 Riverbank Computing Limited <info@riverbankcomputing.com>
+// Copyright (c) 2021 Riverbank Computing Limited <info@riverbankcomputing.com>
 // 
 // This file is part of PyQt5.
 // 
@@ -30,19 +30,28 @@
 #include <QCoreApplication>
 
 
+// Set if any QCoreApplication (or sub-class) instance was created from Python.
+bool qpycore_created_qapp;
+
+
 // This is called to clean up on exit.  It is done in case the QCoreApplication
 // dealloc code hasn't been called.
 static PyObject *cleanup_on_exit(PyObject *, PyObject *)
 {
     pyqt5_cleanup_qobjects();
 
-    QCoreApplication *app = QCoreApplication::instance();
-
-    if (app)
+    // Never destroy a QCoreApplication if we didn't create it (eg. if we are
+    // embedded in a C++ application).
+    if (qpycore_created_qapp)
     {
-        Py_BEGIN_ALLOW_THREADS
-        delete app;
-        Py_END_ALLOW_THREADS
+        QCoreApplication *app = QCoreApplication::instance();
+
+        if (app)
+        {
+            Py_BEGIN_ALLOW_THREADS
+            delete app;
+            Py_END_ALLOW_THREADS
+        }
     }
 
     Py_INCREF(Py_None);
@@ -53,6 +62,9 @@ static PyObject *cleanup_on_exit(PyObject *, PyObject *)
 // Perform any required initialisation.
 void qpycore_init()
 {
+    // We haven't created a QCoreApplication instance.
+    qpycore_created_qapp = false;
+
     // Export the private helpers, ie. those that should not be used by
     // external handwritten code.
     sipExportSymbol("qtcore_qt_metaobject",

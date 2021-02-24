@@ -1,6 +1,6 @@
 # This script generates the Makefiles for building PyQt5.
 #
-# Copyright (c) 2020 Riverbank Computing Limited <info@riverbankcomputing.com>
+# Copyright (c) 2021 Riverbank Computing Limited <info@riverbankcomputing.com>
 # 
 # This file is part of PyQt5.
 # 
@@ -28,7 +28,7 @@ import sys
 
 
 # Initialise the constants.
-PYQT_VERSION_STR = "5.15.2"
+PYQT_VERSION_STR = "5.15.3"
 SIP_MIN_VERSION = '4.19.23'
 
 
@@ -78,10 +78,6 @@ MODULE_METADATA = {
                                     qmake_QT=['multimediawidgets',
                                             'multimedia']),
     'QtNetwork':            ModuleMetadata(qmake_QT=['network', '-gui']),
-    'QtNetworkAuth':        ModuleMetadata(
-                                    qmake_QT=['network', 'networkauth',
-                                            '-gui'],
-                                    cpp11=True),
     'QtNfc':                ModuleMetadata(qmake_QT=['nfc', '-gui']),
     'QtOpenGL':             ModuleMetadata(qmake_QT=['opengl']),
     'QtPositioning':        ModuleMetadata(qmake_QT=['positioning']),
@@ -156,7 +152,7 @@ MODULE_METADATA = {
 # any modules that depend on it.
 COMPOSITE_COMPONENTS = (
     'QtCore',
-    'QtAndroidExtras', 'QtDBus', 'QtGui', 'QtNetwork', 'QtNetworkAuth',
+    'QtAndroidExtras', 'QtDBus', 'QtGui', 'QtNetwork',
     'QtSensors', 'QtSerialPort', 'QtMultimedia', 'QtQml', 'QtWebKit',
     'QtWidgets', 'QtXml', 'QtXmlPatterns', 'QtAxContainer', 'QtDesigner',
     'QtHelp', 'QtMultimediaWidgets', 'QtOpenGL',
@@ -1349,9 +1345,6 @@ def check_modules(target_config, disabled_modules, verbose):
     if target_config.qt_version >= 0x050500:
         check_5_5_modules(target_config, disabled_modules, verbose)
 
-    if target_config.qt_version >= 0x050a00:
-        check_5_10_modules(target_config, disabled_modules, verbose)
-
     if target_config.qt_version >= 0x050c00:
         check_5_12_modules(target_config, disabled_modules, verbose)
 
@@ -1461,18 +1454,6 @@ def check_5_5_modules(target_config, disabled_modules, verbose):
             'qplace.h', 'new QPlace()')
     check_module(target_config, disabled_modules, verbose, 'QtNfc',
             'qnearfieldmanager.h', 'new QNearFieldManager()')
-
-
-def check_5_10_modules(target_config, disabled_modules, verbose):
-    """ Check which modules introduced in Qt v5.10 can be built and update the
-    target configuration accordingly.  target_config is the target
-    configuration.  disabled_modules is the list of modules that have been
-    explicitly disabled.  verbose is set if the output is to be displayed.
-    """
-
-    check_module(target_config, disabled_modules, verbose, 'QtNetworkAuth',
-            'qtnetworkauthversion.h',
-            'const char *v = QTNETWORKAUTH_VERSION_STR')
 
 
 def check_5_12_modules(target_config, disabled_modules, verbose):
