@@ -12,7 +12,6 @@ from PyQt5.QtGui import QColor
 from PyQt5.QtMultimedia import QAudio
 from PyQt5.QtMultimediaWidgets import QGraphicsVideoItem
 from PyQt5.QtNetwork import QLocalSocket
-from PyQt5.QtNetworkAuth import QAbstractOAuth2
 from PyQt5.QtNfc import QNearFieldTarget
 from PyQt5.QtPositioning import QGeoCoordinate
 from PyQt5.QtRemoteObjects import QRemoteObjectHost
