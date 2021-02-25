@@ -9,7 +9,6 @@ Build-Depends: debhelper-compat (= 13),
                libdbus-1-dev (>= 1.0.2),
                libglib2.0-dev,
                libjs-jquery,
-               libqt5networkauth5-dev,
                libqt5opengl5-dev (>= 5.9.1),
                libqt5remoteobjects5-dev,
                libqt5sensors5-dev (>= 5.9.1),
@@ -582,33 +581,5 @@ Depends: python3-dbg,
          ${shlibs:Depends}
 Description: Python bindings for Qt NFC module (debug extension)
  The Qt NFC API provides connectivity between NFC enabled devices.
- .
- This package contains the extension built for the Python 3 debug interpreter.
-
-Package: python3-pyqt5.qtnetworkauth
-Architecture: any
-Depends: python3-pyqt5 (= ${binary:Version}),
-         ${misc:Depends},
-         ${python3:Depends},
-         ${shlibs:Depends}
-Description: Python bindings for Qt Network Authorization module
- Qt Network Authorization provides a set of APIs that enable Qt applications
- to obtain limited access to online accounts and HTTP services without
- exposing users' passwords.
- .
- This package contains the Python 3 version of this module.
-
-Package: python3-pyqt5.qtnetworkauth-dbg
-Section: debug
-Architecture: any
-Depends: python3-dbg,
-         python3-pyqt5-dbg (= ${binary:Version}),
-         python3-pyqt5.qtnetworkauth (= ${binary:Version}),
-         ${misc:Depends},
-         ${shlibs:Depends}
-Description: Python bindings for Qt Network Authorization module (debug extension)
- Qt Network Authorization provides a set of APIs that enable Qt applications
- to obtain limited access to online accounts and HTTP services without
- exposing users' passwords.
  .
  This package contains the extension built for the Python 3 debug interpreter.
