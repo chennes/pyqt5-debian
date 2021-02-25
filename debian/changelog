@@ -3,6 +3,7 @@ pyqt5 (5.15.3+dfsg-1) UNRELEASED; urgency=medium
   * New upstream release.
   * Remove QtNetworkAuth packages, upstream moved them to a separate source.
   * Bump years in debian/copyright.
+  * Bump required python3-pyqtbuild version to 1.9, per pyproject.toml.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Thu, 25 Feb 2021 14:41:58 +0300
 
