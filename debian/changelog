@@ -1,4 +1,4 @@
-pyqt5 (5.15.3+dfsg-1) UNRELEASED; urgency=medium
+pyqt5 (5.15.3+dfsg-1) experimental; urgency=medium
 
   * New upstream release.
   * Remove QtNetworkAuth packages, upstream moved them to a separate source.
@@ -6,7 +6,7 @@ pyqt5 (5.15.3+dfsg-1) UNRELEASED; urgency=medium
   * Bump required python3-pyqtbuild version to 1.9, per pyproject.toml.
   * Add a patch to remove PyQt5-Qt from Requires-Dist metadata field.
 
- -- Dmitry Shachnev <mitya57@debian.org>  Thu, 25 Feb 2021 14:41:58 +0300
+ -- Dmitry Shachnev <mitya57@debian.org>  Fri, 26 Feb 2021 14:23:58 +0300
 
 pyqt5 (5.15.2+dfsg-3) unstable; urgency=medium
 
