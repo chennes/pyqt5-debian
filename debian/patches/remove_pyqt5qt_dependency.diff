@@ -1,0 +1,19 @@
+From: Dmitry Shachnev <mitya57@debian.org>
+Date: Fri, 26 Feb 2021 14:16:01 +0300
+Subject: Remove PyQt5-Qt from Requires-Dist
+
+In Debian we build PyQt5 against system Qt. And having that dependency
+in METADATA file may confuse some tools when it is not installed.
+---
+ pyproject.toml | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index fd9f9f5..d210987 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -13,4 +13,3 @@ author = "Riverbank Computing Limited"
+ author-email = "info@riverbankcomputing.com"
+ license = "GPL v3"
+ description-file = "README"
+-requires-dist = "PyQt5-Qt (>=5.15)"
