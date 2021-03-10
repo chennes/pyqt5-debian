@@ -1,6 +1,7 @@
 pyqt5 (5.15.4+dfsg-1) UNRELEASED; urgency=medium
 
   * New upstream release.
+  * Drop remove_pyqt5qt_dependency.diff, applied upstream.
 
  -- Dmitry Shachnev <mitya57@debian.org>  Wed, 10 Mar 2021 20:24:09 +0300
 
