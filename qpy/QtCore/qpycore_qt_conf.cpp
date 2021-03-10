@@ -89,7 +89,7 @@ bool qpycore_qt_conf()
 
     // Get the directory containing the PyQt5 extension modules.
     QDir pyqt5_dir = QFileInfo(QDir::fromNativeSeparators(init_impl)).absoluteDir();
-    QString qt_dir_name = pyqt5_dir.absoluteFilePath(QLatin1String("Qt"));
+    QString qt_dir_name = pyqt5_dir.absoluteFilePath(QLatin1String("Qt5"));
 
     // Check if there is a bundled copy of Qt.
     if (QFileInfo(qt_dir_name).exists())
