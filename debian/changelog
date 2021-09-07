@@ -1,3 +1,10 @@
+pyqt5 (5.15.4+dfsg-3) UNRELEASED; urgency=medium
+
+  * Install PyQt5/sip.pyi in python3-pyqt5 package.
+    - Build-depend on sip 6.x to make sure this file is available.
+
+ -- Dmitry Shachnev <mitya57@debian.org>  Tue, 07 Sep 2021 12:25:49 +0300
+
 pyqt5 (5.15.4+dfsg-2) unstable; urgency=medium
 
   * Bump Standards-Version to 4.6.0, no changes needed.
