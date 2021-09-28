@@ -45,7 +45,7 @@ SHARED_CONFIGURE_OPTIONS=--confirm-license --verbose \
 %:
 	dh $@ --with python3
 
-override_dh_auto_configure-arch: $(ALLPYTHONS:%=build-%/configure-stamp) $(ALLPYTHONS:%=dbg-build-%/configure-stamp)
+override_dh_auto_configure-arch: $(ALLPYTHONS:%=build-%/configure-stamp)
 
 override_dh_auto_configure-indep: build-$(DEFAULT_PYTHON)/configure-stamp
 
@@ -57,27 +57,13 @@ build-%/configure-stamp:
 	sed -i '/strip/d' build-$*/*/Makefile
 	touch $@
 
-dbg-build-%/configure-stamp:
-	dh_testdir
-	python$*-dbg /usr/bin/sip-build $(SHARED_CONFIGURE_OPTIONS) \
-			--build-dir dbg-build-$* \
-			--debug --no-designer-plugin --no-qml-plugin --no-tools
-	sed -i '/strip/d' dbg-build-$*/*/Makefile
-	sed -i 's/-isystem/-I/' dbg-build-$*/*/Makefile
-	touch $@
-
-override_dh_auto_build-arch: $(ALLPYTHONS:%=build-%/build-stamp) $(ALLPYTHONS:%=dbg-build-%/build-stamp)
+override_dh_auto_build-arch: $(ALLPYTHONS:%=build-%/build-stamp)
 
 override_dh_auto_build-indep: build-$(DEFAULT_PYTHON)/build-stamp
 
 build-%/build-stamp: build-%/configure-stamp
 	dh_testdir
 	dh_auto_build -B build-$*
-	touch $@
-
-dbg-build-%/build-stamp: dbg-build-%/configure-stamp
-	dh_testdir
-	dh_auto_build -B dbg-build-$*
 	touch $@
 
 override_dh_auto_install-indep:
@@ -106,7 +92,6 @@ override_dh_installexamples-indep:
 override_dh_auto_install-arch:
 	set -e; for p in $(ALLPYTHONS); do \
 		$(MAKE) -C build-$$p install INSTALL_ROOT=$(CURDIR)/debian/tmp; \
-		$(MAKE) -C dbg-build-$$p install INSTALL_ROOT=$(CURDIR)/debian/tmp; \
 	done
 
 execute_after_dh_install-arch:
@@ -114,7 +99,7 @@ execute_after_dh_install-arch:
 	rm -rfv debian/python3-pyqt5/usr/lib/python3/dist-packages/PyQt5/uic/port_v2
 
 override_dh_auto_clean:
-	rm -rf $(ALLPYTHONS:%=build-%) $(ALLPYTHONS:%=dbg-build-%)
+	rm -rf $(ALLPYTHONS:%=build-%)
 	find . -type f -name .DS_Store -delete
 	find . -type f -name *.pyc -delete
 	find . -type d -name __pycache__ -delete
@@ -122,17 +107,14 @@ override_dh_auto_clean:
 	rm -f examples/quick/tutorials/extending/chapter6-plugins/Charts/qmldir
 
 override_dh_installdocs:
-	set -e; for p in $(PY_PACKAGE_NAMES:%=python3-%); do \
-		dh_installdocs -p$$p-dbg --link-doc=$$p; \
-	done
-	dh_installdocs --remaining-packages -A NEWS
+	dh_installdocs -A NEWS
 
 override_dh_strip-arch:
 	dh_strip -ppyqt5-dev-tools
 	set -e; \
 	for p in $(PY_PACKAGE_NAMES:%=python3-%); do \
-		DH_OPTIONS= dh_strip -p$$p --dbg-package=$$p-dbg; \
+		DH_OPTIONS= dh_strip -p$$p --dbgsym-migration="$$p-dbg (<< 5.15.4+dfsg-4~)"; \
 	done
 
 override_dh_python3:
-	dh_python3 --no-dbg-cleaning -N pyqt5-examples
+	dh_python3 -N pyqt5-examples
