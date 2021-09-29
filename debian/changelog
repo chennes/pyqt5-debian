@@ -1,10 +1,10 @@
-pyqt5 (5.15.4+dfsg-4) UNRELEASED; urgency=medium
+pyqt5 (5.15.4+dfsg-4) unstable; urgency=medium
 
   * Stop building extensions for Python debug interpreter (closes: #994337).
     - Rely on automatic dbgsym packages for debug symbols.
   * Override Lintian national-encoding warning for codecs example data.
 
- -- Dmitry Shachnev <mitya57@debian.org>  Tue, 28 Sep 2021 19:11:59 +0300
+ -- Dmitry Shachnev <mitya57@debian.org>  Wed, 29 Sep 2021 13:20:27 +0300
 
 pyqt5 (5.15.4+dfsg-3) unstable; urgency=medium
 
