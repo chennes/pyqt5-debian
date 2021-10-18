@@ -1,6 +1,6 @@
 #############################################################################
 ##
-## Copyright (C) 2020 Riverbank Computing Limited.
+## Copyright (C) 2021 Riverbank Computing Limited.
 ## Copyright (C) 2006 Thorsten Marek.
 ## All right reserved.
 ##
@@ -278,6 +278,7 @@ class QtGui(ProxyNamespace):
     class QPainter(ProxyClass): pass
     class QPalette(ProxyClass): pass
     class QFont(ProxyClass): pass
+    class QFontDatabase(ProxyClass): pass
 
 
 # These sub-class QWidget but aren't themselves sub-classed.

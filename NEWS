@@ -1,3 +1,9 @@
+v5.15.5 7th October 2021
+  - Added the missing QPdfWriter.setPageSize() overload.
+  - pylupdate5 now assumes that the default codec is UTF-8 and specified v2.1
+    as the .ts file format.
+  - Bug fixes.
+
 v5.15.4 5th March 2021
   - Packaging bug fixes.
 

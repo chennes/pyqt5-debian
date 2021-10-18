@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: PyQt5
-Version: 5.15.4
+Version: 5.15.5
 Requires-Python: >=3.6
 Summary: Python bindings for the Qt cross platform application toolkit
 Home-Page: https://www.riverbankcomputing.com/software/pyqt/
@@ -55,8 +55,6 @@ Installation
 The GPL version of PyQt5 can be installed from PyPI::
 
     pip install PyQt5
-
-The wheels include a copy of the required parts of the LGPL version of Qt.
 
 ``pip`` will also build and install the bindings from the sdist package but
 Qt's ``qmake`` tool must be on ``PATH``.

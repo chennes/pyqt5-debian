@@ -72,7 +72,10 @@ static bool encodingIsUtf8( const QXmlAttributes& atts )
             return ( atts.value(i) == QString("UTF-8") );
         }
     }
-    return false;
+
+    // tr() and trUtf8() became identical in Qt v5.6 so we assume UTF-8 if not
+    // specified otherwise.
+    return true;
 }
 
 class TsHandler : public QXmlDefaultHandler
@@ -247,6 +250,18 @@ static QString numericEntity( int ch )
            .arg( ch, 0, 16 );
 }
 
+static QString protect_qs(const QString &qs)
+{
+    QString protected_qs(qs);
+
+    protected_qs.replace(QLatin1String("\""), QLatin1String("&quot;"))
+        .replace(QLatin1String("<"), QLatin1String("&lt;"))
+        .replace(QLatin1String(">"), QLatin1String("&gt;"))
+        .replace(QLatin1String("&"), QLatin1String("&amp;"));
+
+    return protected_qs;
+}
+
 static QString protect( const QByteArray& str )
 {
     QString result;
@@ -281,7 +296,7 @@ static QString protect( const QByteArray& str )
 static QString evilBytes( const QByteArray& str, bool utf8 )
 {
     if ( utf8 ) {
-        return protect( str );
+        return protect_qs(QString::fromUtf8(str));
     } else {
         QString result;
         QByteArray t = protect( str ).toLatin1();
@@ -394,7 +409,7 @@ MetaTranslator& MetaTranslator::operator=( const MetaTranslator& tor )
 void MetaTranslator::clear()
 {
     mm.clear();
-    codecName = "ISO-8859-1";
+    codecName = "UTF-8";
     codec = 0;
 }
 
@@ -432,17 +447,18 @@ bool MetaTranslator::save( const QString& filename ) const
         return false;
 
     QTextStream t( &f );
-    t.setCodec( QTextCodec::codecForName("ISO-8859-1") );
+    t.setCodec("UTF-8");
 
     //### The xml prolog allows processors to easily detect the correct encoding
     t << "<?xml version=\"1.0\"";
     t << " encoding=\"utf-8\"";
-    t << "?>\n<!DOCTYPE TS><TS version=\"2.0\"";
+    t << "?>\n<!DOCTYPE TS>\n<TS version=\"2.1\"";
     if (!languageCode().isEmpty() && languageCode() != QLatin1String("C"))
-        t << " language=\"" << languageCode() << "\"" <<\
-            " sourcelanguage=\"" << sourceLanguageCode() << "\"";
+        t << " language=\"" << languageCode() << "\"";
+    if (!sourceLanguageCode().isEmpty())
+        t << " sourcelanguage=\"" << sourceLanguageCode() << "\"";
     t << ">\n";
-    if ( codecName != "ISO-8859-1" )
+    if (codecName != "UTF-8")
         t << "<defaultcodec>" << codecName << "</defaultcodec>\n";
     TMM::ConstIterator m = mm.begin();
     while ( m != mm.end() ) {
@@ -463,10 +479,7 @@ bool MetaTranslator::save( const QString& filename ) const
             }
         } while ( ++m != mm.end() && QByteArray(m.key().context()) == context );
 
-        t << "<context";
-        if ( contextIsUtf8 )
-            t << " encoding=\"UTF-8\"";
-        t << ">\n";
+        t << "<context>\n";
         t << "    <name>" << evilBytes( context, contextIsUtf8 )
           << "</name>\n";
         if ( !comment.isEmpty() )
@@ -481,8 +494,6 @@ bool MetaTranslator::save( const QString& filename ) const
                 continue;
 
             t << "    <message";
-            if ( msg.utf8() )
-                t << " encoding=\"UTF-8\"";
             if ( msg.isPlural() )
                 t << " numerus=\"yes\"";
             t << ">\n";
@@ -511,10 +522,10 @@ bool MetaTranslator::save( const QString& filename ) const
                 languageAndCountry(m_language, &l, &c);
                 QStringList translns = normalizedTranslations(msg, l, c);
                 for (int j = 0; j < qMax(1, translns.count()); ++j)
-                    t << "            <numerusform>" << protect( translns.value(j).toUtf8() ) << "</numerusform>\n";
+                    t << "            <numerusform>" << protect_qs(translns.value(j)) << "</numerusform>\n";
                 t << "        ";
             } else {
-                t << protect( msg.translation().toUtf8() );
+                t << protect_qs(msg.translation());
             }
             t << "</translation>\n";
             t << "    </message>\n";

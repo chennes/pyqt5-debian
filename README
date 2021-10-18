@@ -46,8 +46,6 @@ The GPL version of PyQt5 can be installed from PyPI::
 
     pip install PyQt5
 
-The wheels include a copy of the required parts of the LGPL version of Qt.
-
 ``pip`` will also build and install the bindings from the sdist package but
 Qt's ``qmake`` tool must be on ``PATH``.
 
