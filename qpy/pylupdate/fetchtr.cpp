@@ -198,7 +198,7 @@ static void startTokenizer( const char *fileName, int (*getCharFunc)(),
     yyParenLineNo = 1;
     yyCodecForTr = codecForTr;
     if (!yyCodecForTr)
-        yyCodecForTr = QTextCodec::codecForName("ISO-8859-1");
+        yyCodecForTr = QTextCodec::codecForName("UTF-8");
     Q_ASSERT(yyCodecForTr);
     yyCodecForSource = codecForSource;
 

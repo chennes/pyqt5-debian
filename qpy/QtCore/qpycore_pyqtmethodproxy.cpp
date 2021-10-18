@@ -207,8 +207,10 @@ static PyObject *pyqtMethodProxy_call(PyObject *self, PyObject *args,
 
     if (!failed)
     {
-        failed = !method.invoke(mp->qobject, ret, a0, a1, a2, a3, a4, a5, a6,
-                a7, a8, a9);
+        Py_BEGIN_ALLOW_THREADS
+        failed = !method.invoke(mp->qobject, Qt::DirectConnection, ret, a0, a1,
+                a2, a3, a4, a5, a6, a7, a8, a9);
+        Py_END_ALLOW_THREADS
 
         if (failed)
         {

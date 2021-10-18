@@ -55,7 +55,7 @@ PyObject *qpycore_pyqtslot(PyObject *args, PyObject *kwds)
         return 0;
 
     Chimera::Signature *parsed_sig = Chimera::parse(args, name_str,
-            "a pyqtSlot type argument");
+            "a pyqtSlot argument");
 
     if (!parsed_sig)
         return 0;
