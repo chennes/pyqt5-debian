@@ -1,4 +1,4 @@
-pyqt5 (5.15.6+dfsg-1) UNRELEASED; urgency=medium
+pyqt5 (5.15.6+dfsg-1) unstable; urgency=medium
 
   * New upstream release.
   * Bump sip build-dependencies to 6.4, following pyproject.toml.
