@@ -1,3 +1,29 @@
+2021-10-24  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* pyuic/uic/Compiler/qtproxies.py:
+	Generate typing information to ignore connect() in pyuic generated
+	code.
+	[34cb760572b8] [5.15.6] <5.15-maint>
+
+	* PyQt5.msp:
+	Remove QObject.__getattr__() from QtCore.pyi as it hides
+	missing/mistyped attribute names.
+	[ba5c19ab8690] <5.15-maint>
+
+	* NEWS, PyQt5.msp, lib/pyproject.toml:
+	Fixed pickling of QByteArray with Python v3.10.
+	[2ed6a8e59201] <5.15-maint>
+
+	* test/tests/classes/test_QByteArray.py:
+	Added the QByteArray pickle test.
+	[6e7bdf2d8c92] <5.15-maint>
+
+2021-10-12  Phil Thompson  <phil@riverbankcomputing.com>
+
+	* .hgtags:
+	Added tag 5.15.5 for changeset ab35506238c2
+	[965570c2c344] <5.15-maint>
+
 2021-10-07  Phil Thompson  <phil@riverbankcomputing.com>
 
 	* NEWS, pyuic/uic/Compiler/qtproxies.py:
